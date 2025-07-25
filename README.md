@@ -68,7 +68,18 @@ claude-agents install --all
 > /debug TypeError in production
 ```
 
-## 🤖 Available Agents
+## 📋 Available Sub-Agents
+
+| Agent Name | Description | Slash Command |
+|------------|-------------|---------------|
+| **code-reviewer** | Expert code review specialist for quality, security, and maintainability | `/review` |
+| **test-runner** | Automated test execution specialist that runs tests and fixes failures | `/test [pattern]` |
+| **debugger** | Expert debugging specialist for analyzing errors, stack traces, and fixing issues | `/debug [error]` |
+| **refactor** | Code refactoring specialist for improving code structure, patterns, and maintainability | `/refactor [target]` |
+| **doc-writer** | Documentation specialist for creating and updating technical documentation, API docs, and README files | `/document [type]` |
+| **security-scanner** | Security vulnerability scanner that detects common security issues and suggests fixes | `/security-scan [path]` |
+
+## 🤖 Detailed Agent Descriptions
 
 ### 🔍 Code Reviewer
 *Your personal code quality guardian*
