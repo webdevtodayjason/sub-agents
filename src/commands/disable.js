@@ -7,8 +7,11 @@ export async function disableCommand(agentName, options) {
     
     // Check if agent is installed
     if (!installedAgents[agentName]) {
-      console.log(chalk.red(`Agent "${agentName}" is not installed.`));
-      console.log(chalk.gray('Use "claude-agents list" to see available agents.'));
+      console.log(chalk.red(`❌ Agent "${agentName}" is not installed.`));
+      console.log(chalk.gray('\nTo see installed agents:'));
+      console.log(chalk.cyan('  claude-agents list --installed'));
+      console.log(chalk.gray('\nTo install this agent:'));
+      console.log(chalk.cyan(`  claude-agents install ${agentName}`));
       process.exit(1);
     }
     

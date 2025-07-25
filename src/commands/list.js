@@ -61,13 +61,15 @@ export async function listCommand(options) {
       
       if (agent.installed) {
         const enabled = isAgentEnabled(agent.name);
-        status = enabled 
-          ? chalk.green('● Enabled') 
-          : chalk.gray('○ Disabled');
+        if (enabled) {
+          status = chalk.green('✓ In Use');
+        } else {
+          status = chalk.yellow('⚠ Disabled');
+        }
         scope = agent.installedInfo?.scope || 'unknown';
         version = agent.installedInfo?.version || version;
       } else {
-        status = chalk.blue('Available');
+        status = chalk.gray('Available');
       }
       
       table.push([

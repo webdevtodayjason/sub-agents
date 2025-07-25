@@ -11,6 +11,7 @@ import { enableCommand } from './commands/enable.js';
 import { disableCommand } from './commands/disable.js';
 import { infoCommand } from './commands/info.js';
 import { createCommand } from './commands/create.js';
+import { removeCommand } from './commands/remove.js';
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = dirname(__filename);
@@ -76,6 +77,14 @@ program
   .option('-n, --name <name>', 'Agent name')
   .option('-t, --template <template>', 'Use a template (basic, advanced)')
   .action(createCommand);
+
+// Remove command
+program
+  .command('remove <agent>')
+  .alias('uninstall')
+  .description('Remove an installed agent')
+  .option('-p, --project', 'Remove from project scope')
+  .action(removeCommand);
 
 // Update command
 program

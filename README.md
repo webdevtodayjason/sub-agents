@@ -1,25 +1,28 @@
-# Claude Sub-Agents Manager
+# Claude Sub-Agents Manager - AI-Powered Development Assistants for Claude Code
 
 <div align="center">
 
 ![Claude Sub-Agents](https://img.shields.io/badge/Claude-Sub--Agents-blue?style=for-the-badge&logo=anthropic)
 [![npm version](https://img.shields.io/npm/v/@webdevtoday/claude-agents?style=flat-square)](https://www.npmjs.com/package/@webdevtoday/claude-agents)
+[![npm downloads](https://img.shields.io/npm/dm/@webdevtoday/claude-agents?style=flat-square)](https://www.npmjs.com/package/@webdevtoday/claude-agents)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg?style=flat-square)](https://opensource.org/licenses/MIT)
 [![GitHub release](https://img.shields.io/github/release/webdevtodayjason/sub-agents.svg?style=flat-square)](https://github.com/webdevtodayjason/sub-agents/releases)
 [![PRs Welcome](https://img.shields.io/badge/PRs-welcome-brightgreen.svg?style=flat-square)](http://makeapullrequest.com)
 [![Made with Love](https://img.shields.io/badge/Made%20with-❤️-red.svg?style=flat-square)](https://github.com/webdevtodayjason)
 
-**Supercharge your Claude Code experience with specialized AI sub-agents** 🚀
+**🚀 Supercharge Claude Code with Specialized AI Sub-Agents for Code Review, Testing, Debugging & More**
 
-[Installation](#-installation) • [Quick Start](#-quick-start) • [Agents](#-available-agents) • [Documentation](#-documentation) • [Contributing](#-contributing)
+**Transform your development workflow with intelligent AI assistants that excel at specific programming tasks**
+
+[Installation](#-installation) • [Quick Start](#-quick-start) • [Available Agents](#-available-sub-agents) • [Documentation](#-documentation) • [Contributing](#-contributing)
 
 </div>
 
 ---
 
-## 🎯 Overview
+## 🎯 What is Claude Sub-Agents Manager?
 
-Claude Sub-Agents Manager is a powerful CLI tool that brings specialized AI assistants to your Claude Code workflow. Install production-ready agents for code review, testing, debugging, documentation, and more - or create your own custom agents tailored to your specific needs.
+Claude Sub-Agents Manager is a powerful CLI tool that enhances Claude Code with specialized AI assistants designed for specific development tasks. Each sub-agent is an expert in its domain - from automated code reviews and test fixing to intelligent debugging and documentation generation. Install production-ready agents instantly or create custom agents tailored to your unique workflow needs.
 
 ### ✨ Why Claude Sub-Agents?
 
@@ -194,6 +197,7 @@ claude-agents install security-scanner
 | `list --installed` | Show only installed agents | `claude-agents list --installed` |
 | `enable <agent>` | Enable a disabled agent | `claude-agents enable code-reviewer` |
 | `disable <agent>` | Disable an agent | `claude-agents disable test-runner` |
+| `remove <agent>` | Remove/uninstall an agent | `claude-agents remove debugger` |
 | `info <agent>` | Show agent details | `claude-agents info debugger` |
 | `create` | Create a custom agent | `claude-agents create` |
 
@@ -366,12 +370,35 @@ MIT License - see [LICENSE](LICENSE) file for details
 - 🐦 [Follow Updates](https://twitter.com/webdevtodayjason)
 - ⭐ [Star on GitHub](https://github.com/webdevtodayjason/sub-agents)
 
+## 🔍 SEO Keywords & Use Cases
+
+### Perfect for developers who want to:
+- **Automate code reviews** with AI-powered analysis
+- **Fix failing tests automatically** using intelligent test runners
+- **Debug complex issues** with expert error analysis
+- **Generate documentation** from existing code
+- **Scan for security vulnerabilities** proactively
+- **Refactor legacy code** with modern patterns
+- **Enhance Claude Code** with specialized capabilities
+- **Create custom AI agents** for specific workflows
+
+### Technologies & Integrations:
+- Works with **Claude Code** by Anthropic
+- Supports all major programming languages
+- Integrates with existing development workflows
+- Compatible with Git, npm, yarn, and more
+- Extensible through custom agent creation
+
 ---
 
 <div align="center">
 
 **Made with ❤️ by [WebDev Today Jason](https://github.com/webdevtodayjason)**
 
-*Building tools to make developers' lives easier, one agent at a time*
+*Building AI-powered developer tools to enhance productivity and code quality*
+
+**Claude Sub-Agents Manager** - Your AI-Powered Development Team in Claude Code
+
+[![Star History Chart](https://api.star-history.com/svg?repos=webdevtodayjason/sub-agents&type=Date)](https://star-history.com/#webdevtodayjason/sub-agents&Date)
 
 </div>
