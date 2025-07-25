@@ -1,305 +1,366 @@
 # Claude Sub-Agents Manager
 
-🤖 **A powerful CLI tool to manage specialized AI agents for Claude Code**
+<div align="center">
 
-Enhance your development workflow by installing, managing, and creating specialized AI agents that work seamlessly with Claude Code. Each agent is designed to excel in specific development tasks like code review, testing, debugging, and more.
+![Claude Sub-Agents](https://img.shields.io/badge/Claude-Sub--Agents-blue?style=for-the-badge&logo=anthropic)
+[![npm version](https://img.shields.io/npm/v/@webdevtodayjason/claude-agents?style=flat-square)](https://www.npmjs.com/package/@webdevtodayjason/claude-agents)
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg?style=flat-square)](https://opensource.org/licenses/MIT)
+[![GitHub release](https://img.shields.io/github/release/webdevtodayjason/sub-agents.svg?style=flat-square)](https://github.com/webdevtodayjason/sub-agents/releases)
+[![PRs Welcome](https://img.shields.io/badge/PRs-welcome-brightgreen.svg?style=flat-square)](http://makeapullrequest.com)
+[![Made with Love](https://img.shields.io/badge/Made%20with-❤️-red.svg?style=flat-square)](https://github.com/webdevtodayjason)
 
-```
-╔═══════════════════════════════════════════╗
-║       Claude Sub-Agents Manager           ║
-║   Enhance Claude Code with AI Agents      ║
-╚═══════════════════════════════════════════╝
-```
+**Supercharge your Claude Code experience with specialized AI sub-agents** 🚀
 
-## ✨ Features
+[Installation](#-installation) • [Quick Start](#-quick-start) • [Agents](#-available-agents) • [Documentation](#-documentation) • [Contributing](#-contributing)
 
-- **🔧 Install**: Add sub-agents to your system or project directories
-- **📋 List**: View available and installed agents with status information
-- **⚡ Enable/Disable**: Control which agents are active in your workflow
-- **ℹ️ Info**: Get detailed information about any agent
-- **🛠️ Create**: Build new custom agents tailored to your needs
-- **🔄 Update**: Keep your agents up-to-date (coming soon)
-- **⚙️ Config**: Manage default settings (coming soon)
-
-## 🚀 Quick Start
-
-### Prerequisites
-
-- Node.js 16.0.0 or higher
-- Claude Code environment
-
-### Installation
-
-```bash
-# Clone the repository
-git clone https://github.com/webdevtodayjason/sub-agents.git
-cd claude-sub-agents
-
-# Install dependencies
-npm install
-
-# Make the CLI available globally (optional)
-npm link
-```
-
-### Basic Usage
-
-```bash
-# See all available commands
-claude-agents --help
-
-# List all agents
-claude-agents list
-
-# Install agents interactively
-claude-agents install
-
-# Install all agents at once
-claude-agents install --all
-
-# Get detailed info about an agent
-claude-agents info code-reviewer
-```
-
-## 📚 Available Agents
-
-The manager comes with several pre-built specialist agents:
-
-### 🔍 **Code Reviewer**
-- **Purpose**: Expert code review for quality, security, and maintainability
-- **Triggers**: Automatically reviews code after edits
-- **Features**: Security scanning, performance analysis, best practices enforcement
-- **Tags**: `code-quality`, `review`, `security`, `best-practices`
-
-### 🧪 **Test Runner**
-- **Purpose**: Automated test execution and failure analysis
-- **Triggers**: Runs tests and fixes failures automatically
-- **Features**: Multi-framework support, intelligent failure diagnosis
-- **Tags**: `testing`, `automation`, `quality-assurance`, `ci-cd`
-
-### 🐛 **Debugger**
-- **Purpose**: Expert debugging specialist for error analysis
-- **Triggers**: Activates on errors and stack traces
-- **Features**: Advanced error analysis, root cause identification
-- **Tags**: `debugging`, `error-analysis`, `troubleshooting`, `diagnostics`
-
-## 📖 Command Reference
-
-### `claude-agents install [options]`
-
-Install agents to your system or project.
-
-**Options:**
-- `-p, --project` - Install to project directory instead of user directory
-- `-a, --all` - Install all available agents
-
-**Examples:**
-```bash
-# Interactive installation
-claude-agents install
-
-# Install all agents globally
-claude-agents install --all
-
-# Install to current project only
-claude-agents install --project
-```
-
-### `claude-agents list [options]`
-
-List available and installed agents with their status.
-
-**Options:**
-- `-i, --installed` - Show only installed agents
-- `-a, --available` - Show only available agents
-
-**Examples:**
-```bash
-# Show all agents
-claude-agents list
-
-# Show only installed agents
-claude-agents list --installed
-
-# Show only available agents
-claude-agents list --available
-```
-
-### `claude-agents enable <agent> [options]`
-
-Enable a specific agent.
-
-**Options:**
-- `-p, --project` - Enable in project scope only
-
-**Examples:**
-```bash
-# Enable code reviewer globally
-claude-agents enable code-reviewer
-
-# Enable test runner for this project only
-claude-agents enable test-runner --project
-```
-
-### `claude-agents disable <agent> [options]`
-
-Disable a specific agent without removing it.
-
-**Options:**
-- `-p, --project` - Disable in project scope only
-
-**Examples:**
-```bash
-# Disable debugger globally
-claude-agents disable debugger
-
-# Disable code reviewer for this project
-claude-agents disable code-reviewer --project
-```
-
-### `claude-agents info <agent>`
-
-Show detailed information about an agent.
-
-**Examples:**
-```bash
-# Get info about code reviewer
-claude-agents info code-reviewer
-
-# Get info about test runner
-claude-agents info test-runner
-```
-
-### `claude-agents create [options]`
-
-Create a new custom agent.
-
-**Options:**
-- `-n, --name <name>` - Agent name
-- `-t, --template <template>` - Use a template (basic, advanced)
-
-**Examples:**
-```bash
-# Interactive agent creation
-claude-agents create
-
-# Create with specific name and template
-claude-agents create --name my-agent --template advanced
-```
-
-## 🏗️ Agent Structure
-
-Each agent consists of:
-
-- **`metadata.json`** - Agent configuration and requirements
-- **`agent.md`** - Agent instructions and behavior
-- **`hooks.json`** - Hook configurations (optional)
-
-### Example Agent Structure
-
-```
-agents/
-└── my-agent/
-    ├── metadata.json    # Agent metadata and requirements
-    ├── agent.md         # Agent instructions
-    └── hooks.json       # Hook configurations (optional)
-```
-
-### Metadata Schema
-
-```json
-{
-  "name": "agent-name",
-  "version": "1.0.0",
-  "description": "Agent description",
-  "author": "Your Name",
-  "tags": ["tag1", "tag2"],
-  "requirements": {
-    "tools": ["Read", "Edit", "Bash"],
-    "optional_tools": ["WebSearch"]
-  },
-  "hooks": {
-    "recommended": ["PostToolUse:Edit"],
-    "optional": ["Stop"]
-  },
-  "commands": ["command1"],
-  "compatible_with": ["claude-code@>=1.0.0"]
-}
-```
-
-## 🔧 Configuration
-
-Agents can be installed in two scopes:
-
-- **User Scope**: Available across all projects (`~/.claude/agents/`)
-- **Project Scope**: Available only in current project (`./.claude/agents/`)
-
-## 🤝 Contributing
-
-We welcome contributions! Here's how to get started:
-
-1. **Fork** the repository
-2. **Clone** your fork locally
-3. **Create** a feature branch (`git checkout -b feature/amazing-agent`)
-4. **Make** your changes
-5. **Test** your changes thoroughly
-6. **Commit** your changes (`git commit -am 'Add amazing agent'`)
-7. **Push** to the branch (`git push origin feature/amazing-agent`)
-8. **Create** a Pull Request
-
-### Development Setup
-
-```bash
-# Clone your fork
-git clone https://github.com/YOUR_USERNAME/claude-sub-agents.git
-cd claude-sub-agents
-
-# Install dependencies
-npm install
-
-# Link for local development
-npm link
-
-# Run linting
-npm run lint
-```
-
-### Creating New Agents
-
-When contributing new agents:
-
-1. Follow the agent structure guidelines
-2. Include comprehensive metadata
-3. Write clear, specific instructions
-4. Test with various scenarios
-5. Document any special requirements
-
-## 📄 License
-
-This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
-
-## 🐛 Issues & Support
-
-Found a bug or need help?
-
-- **Bug Reports**: [Open an issue](https://github.com/webdevtodayjason/sub-agents/issues/new?template=bug_report.md)
-- **Feature Requests**: [Request a feature](https://github.com/webdevtodayjason/sub-agents/issues/new?template=feature_request.md)
-- **Questions**: [Start a discussion](https://github.com/webdevtodayjason/sub-agents/discussions)
-
-## 🚀 Roadmap
-
-- [ ] Agent marketplace integration
-- [ ] Agent templates and scaffolding
-- [ ] Automatic agent updates
-- [ ] Agent performance analytics
-- [ ] Custom hook system
-- [ ] Agent dependencies management
-- [ ] Configuration management UI
+</div>
 
 ---
 
-**Made with ❤️ for the Claude Code community**
+## 🎯 Overview
 
-*Enhance your development workflow with specialized AI agents!*
+Claude Sub-Agents Manager is a powerful CLI tool that brings specialized AI assistants to your Claude Code workflow. Install production-ready agents for code review, testing, debugging, documentation, and more - or create your own custom agents tailored to your specific needs.
 
-# sub-agents
+### ✨ Why Claude Sub-Agents?
+
+- **🧠 Specialized Intelligence**: Each agent is an expert in its domain
+- **⚡ Zero Configuration**: Pre-built agents work out of the box
+- **🎨 Fully Customizable**: Create agents that match your workflow
+- **🔄 Smart Context Management**: Agents operate in isolated contexts
+- **🛠️ Developer First**: Built by developers, for developers
+
+## 🚀 Installation
+
+### NPM (Recommended)
+```bash
+npm install -g @webdevtodayjason/claude-agents
+```
+
+### Yarn
+```bash
+yarn global add @webdevtodayjason/claude-agents
+```
+
+### From Source
+```bash
+git clone https://github.com/webdevtodayjason/sub-agents.git
+cd sub-agents
+npm install
+npm link
+```
+
+## ⚡ Quick Start
+
+```bash
+# See what's available
+claude-agents list
+
+# Install your first agent interactively
+claude-agents install
+
+# Or install all agents at once
+claude-agents install --all
+
+# Use an agent via slash command
+# In Claude Code:
+> /review
+> /test
+> /debug TypeError in production
+```
+
+## 🤖 Available Agents
+
+### 🔍 Code Reviewer
+*Your personal code quality guardian*
+
+- Comprehensive security analysis
+- Best practices enforcement
+- Performance optimization suggestions
+- Clean code principles
+
+```bash
+# Install
+claude-agents install code-reviewer
+
+# Use
+> /review
+```
+
+### 🧪 Test Runner
+*Intelligent test automation specialist*
+
+- Auto-detects test frameworks
+- Fixes failing tests automatically
+- Improves test coverage
+- Supports all major languages
+
+```bash
+# Install
+claude-agents install test-runner
+
+# Use
+> /test
+> /test src/**/*.test.js
+```
+
+### 🐛 Debugger
+*Expert problem solver and bug hunter*
+
+- Root cause analysis
+- Stack trace interpretation
+- Performance profiling
+- Memory leak detection
+
+```bash
+# Install
+claude-agents install debugger
+
+# Use
+> /debug Cannot read property 'map' of undefined
+```
+
+### 🔧 Refactor Assistant
+*Code transformation specialist*
+
+- Apply design patterns
+- Modernize legacy code
+- Improve code structure
+- Maintain functionality
+
+```bash
+# Install
+claude-agents install refactor
+
+# Use
+> /refactor improve performance
+> /refactor apply SOLID principles
+```
+
+### 📝 Documentation Writer
+*Technical writing expert*
+
+- API documentation
+- README generation
+- Architecture docs
+- Code comments
+
+```bash
+# Install
+claude-agents install doc-writer
+
+# Use
+> /document API
+> /document architecture
+```
+
+### 🔒 Security Scanner
+*Vulnerability detection specialist*
+
+- Secret detection
+- OWASP compliance
+- Dependency auditing
+- Security best practices
+
+```bash
+# Install
+claude-agents install security-scanner
+
+# Use
+> /security-scan
+> /security-scan src/api/
+```
+
+## 📖 Documentation
+
+### Command Reference
+
+| Command | Description | Example |
+|---------|-------------|---------|
+| `install` | Install agents interactively | `claude-agents install` |
+| `install --all` | Install all available agents | `claude-agents install --all` |
+| `install --project` | Install to project directory | `claude-agents install --project` |
+| `list` | Show all agents | `claude-agents list` |
+| `list --installed` | Show only installed agents | `claude-agents list --installed` |
+| `enable <agent>` | Enable a disabled agent | `claude-agents enable code-reviewer` |
+| `disable <agent>` | Disable an agent | `claude-agents disable test-runner` |
+| `info <agent>` | Show agent details | `claude-agents info debugger` |
+| `create` | Create a custom agent | `claude-agents create` |
+
+### Creating Custom Agents
+
+#### Interactive Creation
+```bash
+claude-agents create
+```
+
+#### Manual Creation
+Create `~/.claude/agents/my-agent.md`:
+
+```markdown
+---
+name: my-agent
+description: What this agent does and when to use it
+tools: Read, Edit, Grep, Bash
+---
+
+You are an expert in [DOMAIN]. Your role is to [PURPOSE].
+
+When invoked, you will:
+1. [STEP 1]
+2. [STEP 2]
+3. [STEP 3]
+
+Always ensure [KEY PRINCIPLE].
+```
+
+### Installation Scopes
+
+**User Scope** (`~/.claude/agents/`)
+- Available in all projects
+- Personal agents
+- Default installation location
+
+**Project Scope** (`.claude/agents/`)
+- Project-specific agents
+- Shared with team via version control
+- Use `--project` flag
+
+### Advanced Configuration
+
+#### State Management
+Agent states are tracked in `.claude-agents.json`:
+
+```json
+{
+  "installedAgents": {
+    "code-reviewer": {
+      "version": "1.0.0",
+      "scope": "user",
+      "installedAt": "2024-01-20T10:00:00Z"
+    }
+  },
+  "enabledAgents": ["code-reviewer"],
+  "disabledAgents": []
+}
+```
+
+#### Hook Integration
+Trigger agents automatically with hooks:
+
+```json
+{
+  "hooks": {
+    "PostToolUse": [{
+      "matcher": "Edit|Write",
+      "hooks": [{
+        "type": "command",
+        "command": "echo 'Consider running /review' >&2"
+      }]
+    }]
+  }
+}
+```
+
+## 🌟 Our Ecosystem
+
+Check out our other tools for Claude Code:
+
+### 🪝 [Claude Hooks Manager](https://github.com/webdevtodayjason/claude-hooks)
+Powerful hook management system for Claude Code automation
+
+### 🔨 [Context Forge](https://github.com/webdevtodayjason/context-forge)
+Our flagship tool for intelligent context generation and management
+
+## 🤝 Contributing
+
+We love contributions! Here's how you can help:
+
+1. **Fork** the repository
+2. **Create** your feature branch (`git checkout -b feature/amazing-agent`)
+3. **Commit** your changes (`git commit -m 'Add amazing agent'`)
+4. **Push** to the branch (`git push origin feature/amazing-agent`)
+5. **Open** a Pull Request
+
+### Adding New Agents
+
+1. Create agent structure:
+```
+agents/
+└── your-agent/
+    ├── agent.md       # Agent definition
+    ├── metadata.json  # Agent metadata
+    └── hooks.json     # Optional hooks
+```
+
+2. Add slash command:
+```
+commands/
+└── your-command.md
+```
+
+3. Submit PR with description
+
+## 🐛 Troubleshooting
+
+### Agent Not Working?
+
+```bash
+# Check installation
+claude-agents list
+
+# Verify agent status
+claude-agents info <agent-name>
+
+# Re-enable if disabled
+claude-agents enable <agent-name>
+```
+
+### Debug Mode
+
+```bash
+# Run Claude with debug output
+claude --debug
+```
+
+### Common Issues
+
+- **Permission denied**: Use `sudo` for global install
+- **Agent not found**: Check spelling and installation
+- **Command not working**: Ensure Claude Code is updated
+
+## 📊 Release Notes
+
+### Version 1.0.0 (Latest)
+- 🎉 Initial release
+- 6 production-ready agents
+- Interactive CLI interface
+- Custom agent creation
+- Project/user scope support
+- Comprehensive documentation
+
+## 📄 License
+
+MIT License - see [LICENSE](LICENSE) file for details
+
+## 🙏 Acknowledgments
+
+- Claude Code team at Anthropic
+- Our amazing community of developers
+- All contributors and testers
+
+## 📬 Connect
+
+- 🐛 [Report Issues](https://github.com/webdevtodayjason/sub-agents/issues)
+- 💡 [Request Features](https://github.com/webdevtodayjason/sub-agents/discussions)
+- 🐦 [Follow Updates](https://twitter.com/webdevtodayjason)
+- ⭐ [Star on GitHub](https://github.com/webdevtodayjason/sub-agents)
+
+---
+
+<div align="center">
+
+**Made with ❤️ by [WebDev Today Jason](https://github.com/webdevtodayjason)**
+
+*Building tools to make developers' lives easier, one agent at a time*
+
+</div>

@@ -1,5 +1,5 @@
 {
-  "name": "claude-sub-agents",
+  "name": "@webdevtodayjason/claude-agents",
   "version": "1.0.0",
   "description": "A powerful sub-agents manager for Claude Code - easily install, manage, and create specialized AI agents",
   "main": "src/index.js",
@@ -38,10 +38,10 @@
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/yourusername/claude-sub-agents.git"
+    "url": "https://github.com/webdevtodayjason/sub-agents.git"
   },
   "bugs": {
-    "url": "https://github.com/yourusername/claude-sub-agents/issues"
+    "url": "https://github.com/webdevtodayjason/sub-agents/issues"
   },
-  "homepage": "https://github.com/yourusername/claude-sub-agents#readme"
+  "homepage": "https://github.com/webdevtodayjason/sub-agents#readme"
 }
