@@ -3,7 +3,7 @@
 <div align="center">
 
 ![Claude Sub-Agents](https://img.shields.io/badge/Claude-Sub--Agents-blue?style=for-the-badge&logo=anthropic)
-[![npm version](https://img.shields.io/npm/v/@webdevtodayjason/claude-agents?style=flat-square)](https://www.npmjs.com/package/@webdevtodayjason/claude-agents)
+[![npm version](https://img.shields.io/npm/v/@webdevtoday/claude-agents?style=flat-square)](https://www.npmjs.com/package/@webdevtoday/claude-agents)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg?style=flat-square)](https://opensource.org/licenses/MIT)
 [![GitHub release](https://img.shields.io/github/release/webdevtodayjason/sub-agents.svg?style=flat-square)](https://github.com/webdevtodayjason/sub-agents/releases)
 [![PRs Welcome](https://img.shields.io/badge/PRs-welcome-brightgreen.svg?style=flat-square)](http://makeapullrequest.com)
@@ -33,12 +33,12 @@ Claude Sub-Agents Manager is a powerful CLI tool that brings specialized AI assi
 
 ### NPM (Recommended)
 ```bash
-npm install -g @webdevtodayjason/claude-agents
+npm install -g @webdevtoday/claude-agents
 ```
 
 ### Yarn
 ```bash
-yarn global add @webdevtodayjason/claude-agents
+yarn global add @webdevtoday/claude-agents
 ```
 
 ### From Source
