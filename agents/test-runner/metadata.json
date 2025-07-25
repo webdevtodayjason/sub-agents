@@ -1,0 +1,17 @@
+{
+  "name": "test-runner",
+  "version": "1.0.0",
+  "description": "Automated test execution specialist that runs tests and fixes failures",
+  "author": "Claude Sub-Agents",
+  "tags": ["testing", "automation", "quality-assurance", "ci-cd"],
+  "requirements": {
+    "tools": ["Bash", "Read", "Edit", "Grep", "Glob"],
+    "optional_tools": ["MultiEdit"]
+  },
+  "hooks": {
+    "recommended": ["Stop", "PostToolUse:Edit"],
+    "optional": ["PreToolUse:Bash"]
+  },
+  "commands": ["test"],
+  "compatible_with": ["claude-code@>=1.0.0"]
+}

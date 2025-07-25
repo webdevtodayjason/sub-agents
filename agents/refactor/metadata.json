@@ -1,0 +1,17 @@
+{
+  "name": "refactor",
+  "version": "1.0.0",
+  "description": "Code refactoring specialist for improving code structure, patterns, and maintainability",
+  "author": "Claude Sub-Agents",
+  "tags": ["refactoring", "code-quality", "patterns", "clean-code"],
+  "requirements": {
+    "tools": ["Read", "Edit", "MultiEdit", "Grep", "Glob"],
+    "optional_tools": ["Bash", "WebSearch"]
+  },
+  "hooks": {
+    "recommended": [],
+    "optional": ["PreToolUse:Edit"]
+  },
+  "commands": ["refactor"],
+  "compatible_with": ["claude-code@>=1.0.0"]
+}

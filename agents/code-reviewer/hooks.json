@@ -1,0 +1,13 @@
+{
+  "PostToolUse": [
+    {
+      "matcher": "Edit|MultiEdit|Write",
+      "hooks": [
+        {
+          "type": "command",
+          "command": "echo 'Code modified - consider running: claude-agents review' >&2"
+        }
+      ]
+    }
+  ]
+}

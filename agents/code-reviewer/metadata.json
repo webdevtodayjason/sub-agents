@@ -1,0 +1,17 @@
+{
+  "name": "code-reviewer",
+  "version": "1.0.0",
+  "description": "Expert code review specialist for quality, security, and maintainability",
+  "author": "Claude Sub-Agents",
+  "tags": ["code-quality", "review", "security", "best-practices"],
+  "requirements": {
+    "tools": ["Read", "Grep", "Glob", "Bash"],
+    "optional_tools": ["WebSearch"]
+  },
+  "hooks": {
+    "recommended": ["PostToolUse:Edit", "PostToolUse:MultiEdit", "PostToolUse:Write"],
+    "optional": ["Stop"]
+  },
+  "commands": ["review"],
+  "compatible_with": ["claude-code@>=1.0.0"]
+}
