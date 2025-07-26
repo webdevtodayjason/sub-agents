@@ -1,7 +1,8 @@
 import chalk from 'chalk';
 import ora from 'ora';
 import { writeFileSync, copyFileSync, existsSync } from 'fs';
-import { join } from 'path';
+import { join, dirname } from 'path';
+import { fileURLToPath } from 'url';
 import { 
   getAgentsDir, 
   getCommandsDir, 
@@ -23,6 +24,9 @@ import {
   getAgentDetails,
   formatAgentForInstall
 } from '../utils/agents.js';
+
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = dirname(__filename);
 
 export async function installCommand(options) {
   const spinner = ora();
