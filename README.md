@@ -81,6 +81,7 @@ claude-agents install --all
 | **refactor** | Code refactoring specialist for improving code structure, patterns, and maintainability | `/refactor [target]` |
 | **doc-writer** | Documentation specialist for creating and updating technical documentation, API docs, and README files | `/document [type]` |
 | **security-scanner** | Security vulnerability scanner that detects common security issues and suggests fixes | `/security-scan [path]` |
+| **shadcn-ui-builder** | UI/UX specialist for designing and implementing interfaces using ShadCN UI components | `/ui` or `/shadcn` |
 
 ## 🤖 Detailed Agent Descriptions
 
@@ -183,6 +184,23 @@ claude-agents install security-scanner
 > /security-scan
 > /security-scan src/api/
 ```
+
+### 🎨 ShadCN UI Builder
+*Your expert UI/UX implementation specialist*
+
+- Modern component-based UI development
+- Accessibility-first design approach
+- Responsive interface implementation
+- ShadCN component ecosystem expertise
+- Design system compliance
+
+```bash
+# Install
+claude-agents install shadcn-ui-builder
+
+# Use
+> /ui create a login page
+> /shadcn implement dashboard with sidebar
 
 ## 📖 Documentation
 
