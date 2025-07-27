@@ -1,0 +1,36 @@
+{
+  "name": "api-documenter",
+  "version": "1.0.0",
+  "description": "API documentation specialist for OpenAPI specs and developer guides",
+  "author": "Claude Sub-Agents",
+  "tags": ["documentation", "api", "openapi", "swagger", "reference"],
+  "requirements": {
+    "tools": ["Read", "Write", "Edit", "MultiEdit", "Grep", "Glob"],
+    "optional_tools": ["WebSearch", "WebFetch"]
+  },
+  "capabilities": [
+    "openapi_generation",
+    "swagger_documentation",
+    "code_examples",
+    "integration_guides",
+    "error_documentation",
+    "versioning"
+  ],
+  "triggers": {
+    "keywords": ["api docs", "openapi", "swagger", "documentation", "reference"],
+    "patterns": ["document * api", "create api docs", "generate openapi"]
+  },
+  "hooks": {
+    "recommended": ["PostToolUse:Write", "PostToolUse:Edit"],
+    "optional": ["Stop"]
+  },
+  "commands": ["api-docs"],
+  "compatible_with": ["claude-code@>=1.0.0"],
+  "examples": [
+    {
+      "trigger": "API documentation request",
+      "request": "Generate OpenAPI documentation for our user API",
+      "response": "I'll create comprehensive OpenAPI 3.0 documentation with examples"
+    }
+  ]
+}

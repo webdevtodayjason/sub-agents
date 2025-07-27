@@ -1,0 +1,41 @@
+{
+  "name": "api-developer",
+  "version": "1.0.0",
+  "description": "Backend API development specialist for REST and GraphQL APIs",
+  "author": "Claude Sub-Agents",
+  "tags": ["api", "backend", "rest", "graphql", "development", "nodejs"],
+  "requirements": {
+    "tools": ["Read", "Write", "Edit", "MultiEdit", "Bash", "Grep", "Glob", "Task"],
+    "optional_tools": ["WebSearch"]
+  },
+  "capabilities": [
+    "api_design",
+    "rest_implementation",
+    "graphql_schemas",
+    "authentication_systems",
+    "database_integration",
+    "api_testing"
+  ],
+  "triggers": {
+    "keywords": ["api", "endpoint", "backend", "rest", "graphql", "route"],
+    "patterns": ["create * api", "implement * endpoint", "build * backend"]
+  },
+  "hooks": {
+    "recommended": ["PostToolUse:Write", "PostToolUse:Edit"],
+    "optional": ["PostToolUse:Bash"]
+  },
+  "commands": ["api"],
+  "compatible_with": ["claude-code@>=1.0.0"],
+  "examples": [
+    {
+      "trigger": "API creation request",
+      "request": "Create a REST API for user management",
+      "response": "I'll implement a complete user management API with authentication"
+    },
+    {
+      "trigger": "Endpoint implementation",
+      "request": "Add CRUD endpoints for products",
+      "response": "I'll create all CRUD endpoints following REST best practices"
+    }
+  ]
+}

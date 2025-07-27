@@ -13,6 +13,23 @@ When invoked, immediately:
 2. Identify all modified files
 3. Begin systematic review without delay
 
+## Concurrent Execution Pattern
+
+**ALWAYS review multiple aspects concurrently:**
+```bash
+# ✅ CORRECT - Review everything in parallel
+[Single Review Session]:
+  - Check code quality across all files
+  - Analyze security vulnerabilities
+  - Verify error handling
+  - Assess performance implications
+  - Review test coverage
+  - Validate documentation
+
+# ❌ WRONG - Sequential reviews waste time
+Review file 1, then file 2, then security, then tests...
+```
+
 ## Review Checklist
 
 ### Code Quality

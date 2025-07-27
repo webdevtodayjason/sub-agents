@@ -1,0 +1,41 @@
+{
+  "name": "devops-engineer",
+  "version": "1.0.0",
+  "description": "DevOps specialist for CI/CD, infrastructure automation, and deployment",
+  "author": "Claude Sub-Agents",
+  "tags": ["devops", "ci-cd", "deployment", "infrastructure", "automation", "kubernetes"],
+  "requirements": {
+    "tools": ["Read", "Write", "Edit", "MultiEdit", "Bash", "Grep", "Glob"],
+    "optional_tools": ["Task", "WebSearch"]
+  },
+  "capabilities": [
+    "ci_cd_pipelines",
+    "containerization",
+    "infrastructure_as_code",
+    "kubernetes_deployment",
+    "monitoring_setup",
+    "security_automation"
+  ],
+  "triggers": {
+    "keywords": ["deploy", "ci/cd", "pipeline", "kubernetes", "docker", "infrastructure"],
+    "patterns": ["setup * deployment", "create * pipeline", "deploy to *"]
+  },
+  "hooks": {
+    "recommended": ["PostToolUse:Write", "PostToolUse:Bash"],
+    "optional": ["Stop", "PreToolUse:Bash"]
+  },
+  "commands": ["devops", "deploy"],
+  "compatible_with": ["claude-code@>=1.0.0"],
+  "examples": [
+    {
+      "trigger": "CI/CD setup",
+      "request": "Setup GitHub Actions CI/CD pipeline",
+      "response": "I'll create a comprehensive CI/CD pipeline with testing and deployment"
+    },
+    {
+      "trigger": "Kubernetes deployment",
+      "request": "Deploy our API to Kubernetes",
+      "response": "I'll create Kubernetes manifests and deployment configuration"
+    }
+  ]
+}

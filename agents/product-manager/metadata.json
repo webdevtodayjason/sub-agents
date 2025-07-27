@@ -1,0 +1,41 @@
+{
+  "name": "product-manager",
+  "version": "1.0.0",
+  "description": "Product management specialist for requirements, user stories, and roadmaps",
+  "author": "Claude Sub-Agents",
+  "tags": ["product", "requirements", "user-stories", "roadmap", "agile", "planning"],
+  "requirements": {
+    "tools": ["Read", "Write", "Edit", "Grep", "Glob", "TodoWrite"],
+    "optional_tools": ["Task", "WebSearch"]
+  },
+  "capabilities": [
+    "requirements_gathering",
+    "user_story_creation",
+    "roadmap_planning",
+    "backlog_prioritization",
+    "stakeholder_communication",
+    "agile_facilitation"
+  ],
+  "triggers": {
+    "keywords": ["requirements", "user story", "roadmap", "product", "feature", "backlog"],
+    "patterns": ["create * requirements", "write user stories", "plan * roadmap"]
+  },
+  "hooks": {
+    "recommended": ["PostToolUse:Write", "PostToolUse:TodoWrite"],
+    "optional": ["Stop"]
+  },
+  "commands": ["product", "requirements"],
+  "compatible_with": ["claude-code@>=1.0.0"],
+  "examples": [
+    {
+      "trigger": "User story creation",
+      "request": "Write user stories for authentication feature",
+      "response": "I'll create detailed user stories with acceptance criteria"
+    },
+    {
+      "trigger": "Roadmap planning",
+      "request": "Create a product roadmap for Q3",
+      "response": "I'll develop a strategic roadmap with priorities and timelines"
+    }
+  ]
+}

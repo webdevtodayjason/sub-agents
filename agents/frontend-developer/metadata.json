@@ -1,0 +1,41 @@
+{
+  "name": "frontend-developer",
+  "version": "1.0.0",
+  "description": "Frontend development specialist for modern web applications",
+  "author": "Claude Sub-Agents",
+  "tags": ["frontend", "react", "vue", "javascript", "ui", "web"],
+  "requirements": {
+    "tools": ["Read", "Write", "Edit", "MultiEdit", "Bash", "Grep", "Glob", "Task"],
+    "optional_tools": ["WebSearch", "WebFetch"]
+  },
+  "capabilities": [
+    "react_development",
+    "vue_development",
+    "state_management",
+    "responsive_design",
+    "performance_optimization",
+    "accessibility"
+  ],
+  "triggers": {
+    "keywords": ["frontend", "ui", "react", "vue", "component", "interface"],
+    "patterns": ["create * ui", "build * frontend", "implement * component"]
+  },
+  "hooks": {
+    "recommended": ["PostToolUse:Write", "PostToolUse:Edit"],
+    "optional": ["PostToolUse:Bash"]
+  },
+  "commands": ["frontend"],
+  "compatible_with": ["claude-code@>=1.0.0"],
+  "examples": [
+    {
+      "trigger": "UI development request",
+      "request": "Create a user dashboard with React",
+      "response": "I'll build a responsive React dashboard with modern components"
+    },
+    {
+      "trigger": "Component creation",
+      "request": "Build a data table component with sorting and filtering",
+      "response": "I'll create a reusable data table component with full functionality"
+    }
+  ]
+}

@@ -1,0 +1,131 @@
+{
+  "version": "1.0.0",
+  "saved": "2025-07-27T17:04:51.345Z",
+  "entries": {
+    "agent:planner:design-architecture": {
+      "value": {
+        "status": "completed",
+        "result": "design-architecture done by planner"
+      },
+      "created": 1753635891032,
+      "expires": null,
+      "accessed": 1753635891038,
+      "accessCount": 2
+    },
+    "agent:api-developer:create-endpoints": {
+      "value": {
+        "status": "completed",
+        "result": "create-endpoints done by api-developer"
+      },
+      "created": 1753635891034,
+      "expires": null,
+      "accessed": 1753635891038,
+      "accessCount": 2
+    },
+    "agent:frontend-developer:build-ui": {
+      "value": {
+        "status": "completed",
+        "result": "build-ui done by frontend-developer"
+      },
+      "created": 1753635891035,
+      "expires": null,
+      "accessed": 1753635891038,
+      "accessCount": 2
+    },
+    "agent:tdd-specialist:write-tests": {
+      "value": {
+        "status": "completed",
+        "result": "write-tests done by tdd-specialist"
+      },
+      "created": 1753635891035,
+      "expires": null,
+      "accessed": 1753635891038,
+      "accessCount": 2
+    },
+    "agent:documenter:generate-docs": {
+      "value": {
+        "status": "completed",
+        "result": "generate-docs done by documenter"
+      },
+      "created": 1753635891036,
+      "expires": null,
+      "accessed": 1753635891038,
+      "accessCount": 2
+    },
+    "agent:planner:analyze-requirements": {
+      "value": {
+        "status": "completed",
+        "result": "analyze-requirements done by planner"
+      },
+      "created": 1753635891189,
+      "expires": null,
+      "accessed": 1753635891189,
+      "accessCount": 1
+    },
+    "agent:developer:implement-feature": {
+      "value": {
+        "status": "completed",
+        "result": "implement-feature done by developer"
+      },
+      "created": 1753635891239,
+      "expires": null,
+      "accessed": 1753635891239,
+      "accessCount": 1
+    },
+    "agent:api-developer:discover-endpoints": {
+      "value": {
+        "status": "completed",
+        "result": "discover-endpoints done by api-developer"
+      },
+      "created": 1753635891342,
+      "expires": null,
+      "accessed": 1753635891342,
+      "accessCount": 1
+    },
+    "api:endpoints": {
+      "value": {
+        "users": "/api/users",
+        "products": "/api/products",
+        "orders": "/api/orders"
+      },
+      "created": 1753635891343,
+      "expires": null,
+      "accessed": 1753635891345,
+      "accessCount": 4
+    },
+    "frontend:components:users": {
+      "value": {
+        "endpoint": "/api/users",
+        "component": "UserList"
+      },
+      "created": 1753635891344,
+      "expires": null,
+      "accessed": 1753635891344,
+      "accessCount": 1
+    },
+    "tests:api:users": {
+      "value": {
+        "endpoint": "/api/users",
+        "tests": [
+          "GET",
+          "POST",
+          "PUT",
+          "DELETE"
+        ]
+      },
+      "created": 1753635891344,
+      "expires": null,
+      "accessed": 1753635891344,
+      "accessCount": 1
+    },
+    "docs:api:endpoints": {
+      "value": {
+        "documented": 3
+      },
+      "created": 1753635891345,
+      "expires": null,
+      "accessed": 1753635891345,
+      "accessCount": 1
+    }
+  }
+}

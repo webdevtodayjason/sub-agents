@@ -1,0 +1,23 @@
+{
+  "PostToolUse": [
+    {
+      "matcher": "Edit|MultiEdit|Write",
+      "hooks": [
+        {
+          "type": "command",
+          "command": "echo '🧪 Code modified - running tests...' >&2 && npm test --if-present"
+        }
+      ]
+    }
+  ],
+  "Stop": [
+    {
+      "hooks": [
+        {
+          "type": "command",
+          "command": "echo '✅ Test execution complete' >&2"
+        }
+      ]
+    }
+  ]
+}

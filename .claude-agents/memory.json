@@ -1,0 +1,63 @@
+{
+  "version": "1.0.0",
+  "saved": "2025-07-27T13:41:41.506Z",
+  "entries": {
+    "agent:planner:current-task": {
+      "value": {
+        "name": "Design e-commerce API",
+        "status": "in-progress",
+        "subtasks": [
+          "authentication",
+          "product-management",
+          "order-processing"
+        ]
+      },
+      "created": 1753623696504,
+      "expires": null,
+      "accessed": 1753623696505,
+      "accessCount": 2
+    },
+    "agent:tester:coverage": {
+      "value": {
+        "overall": 85,
+        "unit": 90,
+        "integration": 80
+      },
+      "created": 1753623696505,
+      "expires": null,
+      "accessed": 1753623696505,
+      "accessCount": 1
+    },
+    "agent:tester:last-run": {
+      "value": "2025-07-27T13:41:36.505Z",
+      "created": 1753623696505,
+      "expires": null,
+      "accessed": 1753623696505,
+      "accessCount": 1
+    },
+    "shared:api:endpoints": {
+      "value": {
+        "users": {
+          "path": "/api/users",
+          "methods": [
+            "GET",
+            "POST",
+            "PUT",
+            "DELETE"
+          ]
+        },
+        "products": {
+          "path": "/api/products",
+          "methods": [
+            "GET",
+            "POST"
+          ]
+        }
+      },
+      "created": 1753623696505,
+      "expires": null,
+      "accessed": 1753623696505,
+      "accessCount": 2
+    }
+  }
+}

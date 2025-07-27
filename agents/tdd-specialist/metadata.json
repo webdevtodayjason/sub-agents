@@ -1,0 +1,41 @@
+{
+  "name": "tdd-specialist",
+  "version": "1.0.0",
+  "description": "Test-Driven Development specialist for comprehensive testing strategies",
+  "author": "Claude Sub-Agents",
+  "tags": ["testing", "tdd", "quality", "unit-tests", "integration-tests"],
+  "requirements": {
+    "tools": ["Read", "Write", "Edit", "MultiEdit", "Bash", "Grep", "Glob"],
+    "optional_tools": ["Task"]
+  },
+  "capabilities": [
+    "test_first_development",
+    "unit_testing",
+    "integration_testing",
+    "test_coverage_analysis",
+    "mock_creation",
+    "test_refactoring"
+  ],
+  "triggers": {
+    "keywords": ["test", "tdd", "coverage", "unit", "integration", "mock"],
+    "patterns": ["write * tests", "test * feature", "add test coverage"]
+  },
+  "hooks": {
+    "recommended": ["PostToolUse:Write", "PostToolUse:Edit", "PostToolUse:Bash"],
+    "optional": ["Stop"]
+  },
+  "commands": ["tdd", "test-first"],
+  "compatible_with": ["claude-code@>=1.0.0"],
+  "examples": [
+    {
+      "trigger": "TDD request",
+      "request": "Implement user authentication with TDD",
+      "response": "I'll start by writing comprehensive tests for authentication flow"
+    },
+    {
+      "trigger": "Test coverage",
+      "request": "Add tests for the payment service",
+      "response": "I'll create unit and integration tests for complete coverage"
+    }
+  ]
+}

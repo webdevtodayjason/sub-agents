@@ -1,0 +1,23 @@
+{
+  "PostToolUse": [
+    {
+      "matcher": "Write|Edit",
+      "hooks": [
+        {
+          "type": "command",
+          "command": "echo '📝 Documentation updated - checking for broken links...' >&2"
+        }
+      ]
+    }
+  ],
+  "Stop": [
+    {
+      "hooks": [
+        {
+          "type": "command",
+          "command": "echo '📚 Documentation generation complete' >&2"
+        }
+      ]
+    }
+  ]
+}

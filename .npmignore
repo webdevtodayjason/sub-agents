@@ -1,0 +1,62 @@
+# Test files
+test/
+*.test.js
+*.spec.js
+
+# Development files
+.swarm/
+dashboard/.next/
+dashboard/node_modules/
+docs/
+*.log
+*.pid
+*.seed
+*.pid.lock
+
+# Source files (if publishing compiled)
+# src/
+
+# Config files
+.eslintrc*
+.prettierrc*
+jest.config.js
+tsconfig.json
+
+# Git files
+.git/
+.gitignore
+.github/
+
+# Documentation source
+*.md
+!README.md
+!LICENSE
+
+# Examples and demos
+examples/
+demo/
+
+# IDE files
+.vscode/
+.idea/
+*.sublime-*
+.DS_Store
+
+# Temporary files
+tmp/
+temp/
+*.tmp
+*.temp
+
+# Coverage
+coverage/
+.nyc_output/
+
+# Environment files
+.env
+.env.*
+!.env.example
+
+# Build artifacts that shouldn't be published
+*.tgz
+*.zip

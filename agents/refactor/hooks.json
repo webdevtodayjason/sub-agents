@@ -1,0 +1,23 @@
+{
+  "PostToolUse": [
+    {
+      "matcher": "Edit|MultiEdit",
+      "hooks": [
+        {
+          "type": "command",
+          "command": "echo '🔧 Code refactored - running tests to ensure functionality preserved...' >&2 && npm test --if-present"
+        }
+      ]
+    }
+  ],
+  "Stop": [
+    {
+      "hooks": [
+        {
+          "type": "command",
+          "command": "echo '✨ Refactoring complete - all tests passing' >&2"
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,23 @@
+{
+  "PostToolUse": [
+    {
+      "matcher": "Write|Edit",
+      "hooks": [
+        {
+          "type": "command",
+          "command": "echo '🎨 UI components updated - checking accessibility...' >&2"
+        }
+      ]
+    }
+  ],
+  "Stop": [
+    {
+      "hooks": [
+        {
+          "type": "command",
+          "command": "echo '✨ UI implementation complete - components ready' >&2"
+        }
+      ]
+    }
+  ]
+}

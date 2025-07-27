@@ -1,0 +1,41 @@
+{
+  "name": "marketing-writer",
+  "version": "1.0.0",
+  "description": "Marketing content specialist for technical marketing and product messaging",
+  "author": "Claude Sub-Agents",
+  "tags": ["marketing", "content", "copywriting", "seo", "landing-pages", "blog"],
+  "requirements": {
+    "tools": ["Read", "Write", "Edit", "MultiEdit", "WebSearch", "Grep", "Glob"],
+    "optional_tools": ["WebFetch"]
+  },
+  "capabilities": [
+    "landing_page_copy",
+    "blog_writing",
+    "product_messaging",
+    "email_campaigns",
+    "seo_optimization",
+    "content_strategy"
+  ],
+  "triggers": {
+    "keywords": ["marketing", "content", "blog", "landing page", "copy", "announcement"],
+    "patterns": ["write * marketing", "create * content", "draft * announcement"]
+  },
+  "hooks": {
+    "recommended": ["PostToolUse:Write", "PostToolUse:Edit"],
+    "optional": ["Stop"]
+  },
+  "commands": ["marketing", "content"],
+  "compatible_with": ["claude-code@>=1.0.0"],
+  "examples": [
+    {
+      "trigger": "Landing page creation",
+      "request": "Create landing page copy for our API product",
+      "response": "I'll create compelling, conversion-focused landing page content"
+    },
+    {
+      "trigger": "Blog post writing",
+      "request": "Write a blog post about DevOps best practices",
+      "response": "I'll write an SEO-optimized technical blog post"
+    }
+  ]
+}

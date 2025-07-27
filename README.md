@@ -82,6 +82,14 @@ claude-agents install --all
 | **doc-writer** | Documentation specialist for creating and updating technical documentation, API docs, and README files | `/document [type]` |
 | **security-scanner** | Security vulnerability scanner that detects common security issues and suggests fixes | `/security-scan [path]` |
 | **shadcn-ui-builder** | UI/UX specialist for designing and implementing interfaces using ShadCN UI components | `/ui` or `/shadcn` |
+| **project-planner** | Strategic planning specialist for project decomposition and workflow management | `/plan [project]` |
+| **api-developer** | Backend API development specialist for REST, GraphQL, and microservices | `/api [spec]` |
+| **frontend-developer** | Frontend development specialist for modern web applications | `/frontend [feature]` |
+| **tdd-specialist** | Test-Driven Development specialist for comprehensive testing strategies | `/tdd [component]` |
+| **api-documenter** | API documentation specialist for OpenAPI, Swagger, and technical docs | `/apidoc [endpoint]` |
+| **devops-engineer** | DevOps specialist for CI/CD, infrastructure automation, and deployment | `/devops [task]` |
+| **product-manager** | Product management specialist for requirements, roadmaps, and user stories | `/product [feature]` |
+| **marketing-writer** | Marketing content specialist for technical marketing and product messaging | `/marketing [content]` |
 
 ## 🤖 Detailed Agent Descriptions
 
@@ -201,6 +209,150 @@ claude-agents install shadcn-ui-builder
 # Use
 > /ui create a login page
 > /shadcn implement dashboard with sidebar
+```
+
+### 📋 Project Planner
+*Strategic planning and task decomposition expert*
+
+- Project architecture design
+- Task breakdown and prioritization
+- Dependency mapping
+- Timeline estimation
+- Risk assessment
+
+```bash
+# Install
+claude-agents install project-planner
+
+# Use
+> /plan e-commerce platform
+> /plan microservices migration
+```
+
+### 🔌 API Developer
+*Backend development specialist*
+
+- RESTful API design
+- GraphQL implementation
+- Microservices architecture
+- Database schema design
+- API security best practices
+
+```bash
+# Install
+claude-agents install api-developer
+
+# Use
+> /api user authentication endpoints
+> /api payment processing service
+```
+
+### 💻 Frontend Developer
+*Modern web interface specialist*
+
+- React/Vue/Angular expertise
+- Responsive design implementation
+- State management
+- Performance optimization
+- Accessibility compliance
+
+```bash
+# Install
+claude-agents install frontend-developer
+
+# Use
+> /frontend user dashboard
+> /frontend shopping cart component
+```
+
+### 🧪 TDD Specialist
+*Test-driven development expert*
+
+- Unit test creation
+- Integration testing
+- E2E test scenarios
+- Test coverage analysis
+- Mock and stub implementation
+
+```bash
+# Install
+claude-agents install tdd-specialist
+
+# Use
+> /tdd UserService class
+> /tdd API integration tests
+```
+
+### 📚 API Documenter
+*Technical documentation specialist*
+
+- OpenAPI/Swagger specs
+- API endpoint documentation
+- Integration guides
+- SDK documentation
+- Example code generation
+
+```bash
+# Install
+claude-agents install api-documenter
+
+# Use
+> /apidoc REST endpoints
+> /apidoc GraphQL schema
+```
+
+### 🚀 DevOps Engineer
+*Infrastructure and deployment expert*
+
+- CI/CD pipeline setup
+- Docker containerization
+- Kubernetes orchestration
+- Infrastructure as Code
+- Monitoring and logging
+
+```bash
+# Install
+claude-agents install devops-engineer
+
+# Use
+> /devops GitHub Actions workflow
+> /devops Kubernetes deployment
+```
+
+### 📊 Product Manager
+*Product strategy and planning specialist*
+
+- User story creation
+- Feature specification
+- Roadmap planning
+- Requirements documentation
+- Stakeholder communication
+
+```bash
+# Install
+claude-agents install product-manager
+
+# Use
+> /product user onboarding flow
+> /product feature prioritization
+```
+
+### ✍️ Marketing Writer
+*Technical marketing content expert*
+
+- Product launch materials
+- Technical blog posts
+- Feature announcements
+- Documentation marketing
+- Developer advocacy content
+
+```bash
+# Install
+claude-agents install marketing-writer
+
+# Use
+> /marketing product launch post
+> /marketing API feature announcement
 
 ## 📖 Documentation
 
@@ -218,6 +370,42 @@ claude-agents install shadcn-ui-builder
 | `remove <agent>` | Remove/uninstall an agent | `claude-agents remove debugger` |
 | `info <agent>` | Show agent details | `claude-agents info debugger` |
 | `create` | Create a custom agent | `claude-agents create` |
+| `run <agent>` | Run agent independently | `claude-agents run marketing-writer --task "write launch post"` |
+| `dashboard` | Launch web dashboard | `claude-agents dashboard` |
+
+### Independent Agent Execution
+
+Run agents outside of Claude Code for automation and scripting:
+
+```bash
+# Run with inline task
+claude-agents run marketing-writer --task "Write launch announcement for v2.0"
+
+# Run with task file
+claude-agents run api-developer --file api-spec.md
+
+# Interactive mode
+claude-agents run tdd-specialist --interactive
+```
+
+### Web Dashboard
+
+Monitor and manage your agents through the web interface:
+
+```bash
+# Start dashboard on port 7842
+claude-agents dashboard
+
+# Custom port
+claude-agents dashboard --port 8080
+```
+
+Dashboard features:
+- Real-time agent status
+- Task execution history
+- Memory system viewer
+- Performance metrics
+- Quick agent actions
 
 ### Creating Custom Agents
 
@@ -277,19 +465,63 @@ Agent states are tracked in `.claude-agents.json`:
 }
 ```
 
-#### Hook Integration
-Trigger agents automatically with hooks:
+### Hooks System
+
+The hooks system enables automated workflows and agent coordination. Each agent can define hooks that trigger on specific events.
+
+#### Hook Types
+
+| Hook Type | Description | Trigger |
+|-----------|-------------|---------|
+| `PostToolUse:Edit` | After file edits | Any file modification |
+| `PostToolUse:Write` | After file creation | New file written |
+| `PostToolUse:Bash` | After command execution | Bash commands run |
+| `PreToolUse` | Before any tool use | Tool about to run |
+| `TaskComplete` | After task completion | Agent finishes task |
+| `Stop` | On conversation end | Session terminating |
+
+#### Hook Actions
+
+```json
+{
+  "PostToolUse:Edit": {
+    "condition": "file.endsWith('.js')",
+    "commands": ["npm run lint", "npm test"]
+  },
+  "TaskComplete": {
+    "notify": "Task {{task_name}} completed",
+    "store": "agent:{{agent_name}}:last_task"
+  }
+}
+```
+
+#### Example: Auto-Review Hook
+
+Create hooks for automatic code review after edits:
 
 ```json
 {
   "hooks": {
-    "PostToolUse": [{
-      "matcher": "Edit|Write",
+    "PostToolUse:Edit": [{
+      "matcher": "\\.(js|ts|py)$",
       "hooks": [{
         "type": "command",
         "command": "echo 'Consider running /review' >&2"
       }]
     }]
+  }
+}
+```
+
+#### Example: Test Runner Hook
+
+Automatically run tests after code changes:
+
+```json
+{
+  "PostToolUse:Edit": {
+    "condition": "file.includes('src/')",
+    "commands": ["npm test -- --watch=false"]
   }
 }
 ```

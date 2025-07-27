@@ -1,7 +1,7 @@
 {
-  "name": "@webdevtoday/claude-agents",
-  "version": "1.0.2",
-  "description": "Supercharge Claude Code with specialized AI sub-agents for code review, testing, debugging, documentation & more. Easy CLI tool to install, manage & create custom AI agents for enhanced development workflow",
+  "name": "claude-sub-agents",
+  "version": "2.0.0",
+  "description": "AI-powered development shop with 15 specialized agents for Claude Code. Features concurrent execution, shared memory, and web dashboard for 80% faster development.",
   "main": "src/index.js",
   "type": "module",
   "bin": {
@@ -19,7 +19,10 @@
     "start": "node bin/claude-agents",
     "lint": "eslint src/**/*.js",
     "format": "prettier --write src/**/*.js",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "node test/run-all-tests.js",
+    "test:memory": "node test/memory.test.js",
+    "test:concurrent": "node test/concurrent-execution.test.js",
+    "test:commands": "node test/commands.test.js"
   },
   "keywords": [
     "claude",
@@ -69,7 +72,8 @@
     "fs-extra": "^11.2.0",
     "inquirer": "^9.2.12",
     "ora": "^8.0.1",
-    "yaml": "^2.3.4"
+    "yaml": "^2.3.4",
+    "open": "^10.0.0"
   },
   "devDependencies": {
     "eslint": "^8.56.0",

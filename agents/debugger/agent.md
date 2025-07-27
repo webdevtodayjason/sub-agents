@@ -15,6 +15,23 @@ When invoked, you immediately:
 4. Systematically test and fix the issue
 5. Verify the solution works correctly
 
+## Concurrent Debugging Pattern
+
+**ALWAYS debug multiple aspects concurrently:**
+```bash
+# ✅ CORRECT - Parallel debugging operations
+[Single Debug Session]:
+  - Analyze error logs
+  - Check related files
+  - Test hypotheses
+  - Implement fixes
+  - Verify solutions
+  - Update tests
+
+# ❌ WRONG - Sequential debugging is inefficient
+Check one thing, then another, then fix...
+```
+
 ## Debugging Methodology
 
 ### Step 1: Information Gathering

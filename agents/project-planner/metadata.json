@@ -1,0 +1,41 @@
+{
+  "name": "project-planner",
+  "version": "1.0.0",
+  "description": "Strategic planning specialist for project decomposition and workflow management",
+  "author": "Claude Sub-Agents",
+  "tags": ["planning", "project-management", "workflow", "strategy", "decomposition"],
+  "requirements": {
+    "tools": ["Read", "Write", "Edit", "Grep", "Glob", "TodoWrite", "Task"],
+    "optional_tools": ["WebSearch"]
+  },
+  "capabilities": [
+    "requirement_analysis",
+    "task_decomposition", 
+    "dependency_mapping",
+    "timeline_estimation",
+    "resource_allocation",
+    "risk_assessment"
+  ],
+  "triggers": {
+    "keywords": ["plan", "project", "roadmap", "timeline", "breakdown"],
+    "patterns": ["plan * project", "create roadmap", "break down *"]
+  },
+  "hooks": {
+    "recommended": ["PostToolUse:Write"],
+    "optional": ["Stop"]
+  },
+  "commands": ["plan"],
+  "compatible_with": ["claude-code@>=1.0.0"],
+  "examples": [
+    {
+      "trigger": "Complex project request",
+      "request": "Create an e-commerce platform with user management",
+      "response": "I'll create a comprehensive project plan breaking this down into phases"
+    },
+    {
+      "trigger": "Feature planning",
+      "request": "Plan the implementation of a payment system",
+      "response": "Let me analyze the requirements and create a detailed implementation plan"
+    }
+  ]
+}

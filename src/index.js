@@ -12,6 +12,8 @@ import { disableCommand } from './commands/disable.js';
 import { infoCommand } from './commands/info.js';
 import { createCommand } from './commands/create.js';
 import { removeCommand } from './commands/remove.js';
+import { runCommand } from './commands/run.js';
+import { dashboardCommand } from './commands/dashboard.js';
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = dirname(__filename);
@@ -86,6 +88,15 @@ program
   .option('-p, --project', 'Remove from project scope')
   .action(removeCommand);
 
+// Run command
+program
+  .command('run <agent>')
+  .description('Run a specific agent independently')
+  .option('-t, --task <task>', 'Task description for the agent')
+  .option('-f, --file <file>', 'Target file or directory')
+  .option('-i, --interactive', 'Interactive mode for task input')
+  .action(runCommand);
+
 // Update command
 program
   .command('update')
@@ -94,6 +105,14 @@ program
   .action(() => {
     console.log(chalk.yellow('Update command coming soon!'));
   });
+
+// Dashboard command
+program
+  .command('dashboard')
+  .description('Launch the web dashboard for agent management')
+  .option('-p, --port <port>', 'Dashboard port', '7842')
+  .option('--no-browser', "Don't open browser automatically")
+  .action(dashboardCommand);
 
 // Config command
 program
