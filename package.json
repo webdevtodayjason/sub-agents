@@ -1,6 +1,6 @@
 {
-  "name": "claude-sub-agents",
-  "version": "2.0.0",
+  "name": "@webdevtoday/claude-agents",
+  "version": "1.2.0",
   "description": "AI-powered development shop with 15 specialized agents for Claude Code. Features concurrent execution, shared memory, and web dashboard for 80% faster development.",
   "main": "src/index.js",
   "type": "module",
