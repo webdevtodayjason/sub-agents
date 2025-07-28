@@ -1,15 +1,15 @@
 {
   "version": "1.0.0",
-  "saved": "2025-07-27T17:04:51.345Z",
+  "saved": "2025-07-27T22:17:56.362Z",
   "entries": {
     "agent:planner:design-architecture": {
       "value": {
         "status": "completed",
         "result": "design-architecture done by planner"
       },
-      "created": 1753635891032,
+      "created": 1753653904589,
       "expires": null,
-      "accessed": 1753635891038,
+      "accessed": 1753653904594,
       "accessCount": 2
     },
     "agent:api-developer:create-endpoints": {
@@ -17,9 +17,9 @@
         "status": "completed",
         "result": "create-endpoints done by api-developer"
       },
-      "created": 1753635891034,
+      "created": 1753653904591,
       "expires": null,
-      "accessed": 1753635891038,
+      "accessed": 1753653904594,
       "accessCount": 2
     },
     "agent:frontend-developer:build-ui": {
@@ -27,9 +27,9 @@
         "status": "completed",
         "result": "build-ui done by frontend-developer"
       },
-      "created": 1753635891035,
+      "created": 1753653904592,
       "expires": null,
-      "accessed": 1753635891038,
+      "accessed": 1753653904594,
       "accessCount": 2
     },
     "agent:tdd-specialist:write-tests": {
@@ -37,9 +37,9 @@
         "status": "completed",
         "result": "write-tests done by tdd-specialist"
       },
-      "created": 1753635891035,
+      "created": 1753653904592,
       "expires": null,
-      "accessed": 1753635891038,
+      "accessed": 1753653904594,
       "accessCount": 2
     },
     "agent:documenter:generate-docs": {
@@ -47,9 +47,9 @@
         "status": "completed",
         "result": "generate-docs done by documenter"
       },
-      "created": 1753635891036,
+      "created": 1753653904593,
       "expires": null,
-      "accessed": 1753635891038,
+      "accessed": 1753653904594,
       "accessCount": 2
     },
     "agent:planner:analyze-requirements": {
@@ -57,9 +57,9 @@
         "status": "completed",
         "result": "analyze-requirements done by planner"
       },
-      "created": 1753635891189,
+      "created": 1753653904745,
       "expires": null,
-      "accessed": 1753635891189,
+      "accessed": 1753653904745,
       "accessCount": 1
     },
     "agent:developer:implement-feature": {
@@ -67,9 +67,9 @@
         "status": "completed",
         "result": "implement-feature done by developer"
       },
-      "created": 1753635891239,
+      "created": 1753653904795,
       "expires": null,
-      "accessed": 1753635891239,
+      "accessed": 1753653904795,
       "accessCount": 1
     },
     "agent:api-developer:discover-endpoints": {
@@ -77,9 +77,9 @@
         "status": "completed",
         "result": "discover-endpoints done by api-developer"
       },
-      "created": 1753635891342,
+      "created": 1753653904897,
       "expires": null,
-      "accessed": 1753635891342,
+      "accessed": 1753653904897,
       "accessCount": 1
     },
     "api:endpoints": {
@@ -88,9 +88,9 @@
         "products": "/api/products",
         "orders": "/api/orders"
       },
-      "created": 1753635891343,
+      "created": 1753653904899,
       "expires": null,
-      "accessed": 1753635891345,
+      "accessed": 1753653904902,
       "accessCount": 4
     },
     "frontend:components:users": {
@@ -98,9 +98,9 @@
         "endpoint": "/api/users",
         "component": "UserList"
       },
-      "created": 1753635891344,
+      "created": 1753653904900,
       "expires": null,
-      "accessed": 1753635891344,
+      "accessed": 1753653904900,
       "accessCount": 1
     },
     "tests:api:users": {
@@ -113,18 +113,285 @@
           "DELETE"
         ]
       },
-      "created": 1753635891344,
+      "created": 1753653904901,
       "expires": null,
-      "accessed": 1753635891344,
+      "accessed": 1753653904901,
       "accessCount": 1
     },
     "docs:api:endpoints": {
       "value": {
         "documented": 3
       },
-      "created": 1753635891345,
+      "created": 1753653904902,
       "expires": null,
-      "accessed": 1753635891345,
+      "accessed": 1753653904902,
+      "accessCount": 1
+    },
+    "context-forge:detected": {
+      "value": true,
+      "created": 1753654586355,
+      "expires": null,
+      "accessed": 1753654586355,
+      "accessCount": 1
+    },
+    "context-forge:config": {
+      "value": {
+        "projectPath": "/Users/sem/code/claude-sub-agents",
+        "structure": {
+          "hasClaudeMd": true,
+          "hasPRPs": false,
+          "hasSlashCommands": false,
+          "hasHooks": false,
+          "hasImplementationDocs": false
+        },
+        "techStack": null,
+        "features": []
+      },
+      "created": 1753654586356,
+      "expires": null,
+      "accessed": 1753654586356,
+      "accessCount": 1
+    },
+    "context-forge:rules": {
+      "value": {
+        "projectName": "Claude Sub-Agents Configuration",
+        "description": null,
+        "techStack": [],
+        "rules": [],
+        "conventions": [],
+        "structure": null
+      },
+      "created": 1753654586356,
+      "expires": null,
+      "accessed": 1753654586356,
+      "accessCount": 1
+    },
+    "context-forge:progress": {
+      "value": {
+        "stages": [
+          {
+            "number": 1,
+            "name": "Foundation & Setup\n**Duration:** 3-5 days\n**Dependencies:** None",
+            "tasks": [],
+            "totalTasks": 0,
+            "completedTasks": 0
+          }
+        ],
+        "totalStages": 1,
+        "currentStage": null
+      },
+      "created": 1753653344269,
+      "expires": 1753656944269,
+      "accessed": 1753653344269,
+      "accessCount": 1
+    },
+    "context-forge:stage:1": {
+      "value": {
+        "name": "Foundation & Setup\n**Duration:** 3-5 days\n**Dependencies:** None",
+        "progress": null,
+        "completedTasks": 0,
+        "totalTasks": 0
+      },
+      "created": 1753653344269,
+      "expires": 1753656944269,
+      "accessed": 1753653344269,
+      "accessCount": 1
+    },
+    "context-forge:prps": {
+      "value": [
+        {
+          "filename": "README.md",
+          "name": "README",
+          "goal": null,
+          "path": "/Users/sem/code/projects/dev-profileer/PRPs/README.md"
+        },
+        {
+          "filename": "developer-profiler-prp.md",
+          "name": "developer-profiler-prp",
+          "goal": null,
+          "path": "/Users/sem/code/projects/dev-profileer/PRPs/developer-profiler-prp.md"
+        },
+        {
+          "filename": "feature-auth-prp.md",
+          "name": "feature-auth-prp",
+          "goal": null,
+          "path": "/Users/sem/code/projects/dev-profileer/PRPs/feature-auth-prp.md"
+        },
+        {
+          "filename": "feature-dark-theme-ui-prp.md",
+          "name": "feature-dark-theme-ui-prp",
+          "goal": null,
+          "path": "/Users/sem/code/projects/dev-profileer/PRPs/feature-dark-theme-ui-prp.md"
+        },
+        {
+          "filename": "feature-dashboard-prp.md",
+          "name": "feature-dashboard-prp",
+          "goal": null,
+          "path": "/Users/sem/code/projects/dev-profileer/PRPs/feature-dashboard-prp.md"
+        },
+        {
+          "filename": "feature-github-integration-prp.md",
+          "name": "feature-github-integration-prp",
+          "goal": null,
+          "path": "/Users/sem/code/projects/dev-profileer/PRPs/feature-github-integration-prp.md"
+        },
+        {
+          "filename": "feature-profile-builder-prp.md",
+          "name": "feature-profile-builder-prp",
+          "goal": null,
+          "path": "/Users/sem/code/projects/dev-profileer/PRPs/feature-profile-builder-prp.md"
+        },
+        {
+          "filename": "feature-search-discovery-prp.md",
+          "name": "feature-search-discovery-prp",
+          "goal": null,
+          "path": "/Users/sem/code/projects/dev-profileer/PRPs/feature-search-discovery-prp.md"
+        }
+      ],
+      "created": 1753653344268,
+      "expires": 1753656944268,
+      "accessed": 1753653344268,
+      "accessCount": 1
+    },
+    "context-forge:prp:README.md:state": {
+      "value": {
+        "name": "README",
+        "goal": null,
+        "executed": false,
+        "validationPassed": false,
+        "lastAccessed": 1753653344268
+      },
+      "created": 1753653344268,
+      "expires": 1753656944268,
+      "accessed": 1753653344268,
+      "accessCount": 1
+    },
+    "context-forge:prp:developer-profiler-prp.md:state": {
+      "value": {
+        "name": "developer-profiler-prp",
+        "goal": null,
+        "executed": false,
+        "validationPassed": false,
+        "lastAccessed": 1753653344268
+      },
+      "created": 1753653344268,
+      "expires": 1753656944268,
+      "accessed": 1753653344268,
+      "accessCount": 1
+    },
+    "context-forge:prp:feature-auth-prp.md:state": {
+      "value": {
+        "name": "User Authentication",
+        "goal": null,
+        "executed": false,
+        "validationPassed": false,
+        "lastAccessed": 1753653344268,
+        "currentStep": "planning",
+        "lastUpdated": 1753653344270
+      },
+      "created": 1753653344270,
+      "expires": 1753656944270,
+      "accessed": 1753653344270,
+      "accessCount": 1
+    },
+    "context-forge:prp:feature-dark-theme-ui-prp.md:state": {
+      "value": {
+        "name": "feature-dark-theme-ui-prp",
+        "goal": null,
+        "executed": false,
+        "validationPassed": false,
+        "lastAccessed": 1753653344268
+      },
+      "created": 1753653344268,
+      "expires": 1753656944268,
+      "accessed": 1753653344268,
+      "accessCount": 1
+    },
+    "context-forge:prp:feature-dashboard-prp.md:state": {
+      "value": {
+        "name": "feature-dashboard-prp",
+        "goal": null,
+        "executed": false,
+        "validationPassed": false,
+        "lastAccessed": 1753653344268
+      },
+      "created": 1753653344268,
+      "expires": 1753656944268,
+      "accessed": 1753653344268,
+      "accessCount": 1
+    },
+    "context-forge:prp:feature-github-integration-prp.md:state": {
+      "value": {
+        "name": "feature-github-integration-prp",
+        "goal": null,
+        "executed": false,
+        "validationPassed": false,
+        "lastAccessed": 1753653344268
+      },
+      "created": 1753653344268,
+      "expires": 1753656944268,
+      "accessed": 1753653344268,
+      "accessCount": 1
+    },
+    "context-forge:prp:feature-profile-builder-prp.md:state": {
+      "value": {
+        "name": "feature-profile-builder-prp",
+        "goal": null,
+        "executed": false,
+        "validationPassed": false,
+        "lastAccessed": 1753653344268
+      },
+      "created": 1753653344268,
+      "expires": 1753656944268,
+      "accessed": 1753653344268,
+      "accessCount": 1
+    },
+    "context-forge:prp:feature-search-discovery-prp.md:state": {
+      "value": {
+        "name": "feature-search-discovery-prp",
+        "goal": null,
+        "executed": false,
+        "validationPassed": false,
+        "lastAccessed": 1753653344269
+      },
+      "created": 1753653344269,
+      "expires": 1753656944269,
+      "accessed": 1753653344269,
+      "accessCount": 1
+    },
+    "agent:project-planner:current-execution": {
+      "value": {
+        "id": "execution:1753654586356",
+        "task": "Review dev-profileer project",
+        "startTime": "2025-07-27T22:16:26.356Z",
+        "status": "running"
+      },
+      "created": 1753654586356,
+      "expires": 1753658186356,
+      "accessed": 1753654586356,
+      "accessCount": 1
+    },
+    "shared:current-task": {
+      "value": {
+        "agent": "project-planner",
+        "task": "Review dev-profileer project",
+        "executionId": "execution:1753654586356"
+      },
+      "created": 1753654586357,
+      "expires": 1753658186357,
+      "accessed": 1753654586357,
+      "accessCount": 1
+    },
+    "agent:project-planner:last-execution": {
+      "value": {
+        "id": "execution:1753654586356",
+        "task": "Review dev-profileer project",
+        "completedAt": "2025-07-27T22:16:29.862Z",
+        "status": "completed"
+      },
+      "created": 1753654589862,
+      "expires": null,
+      "accessed": 1753654589862,
       "accessCount": 1
     }
   }

@@ -1,7 +1,7 @@
 {
   "name": "@webdevtoday/claude-agents",
-  "version": "1.2.0",
-  "description": "AI-powered development shop with 15 specialized agents for Claude Code. Features concurrent execution, shared memory, and web dashboard for 80% faster development.",
+  "version": "1.3.1",
+  "description": "AI-powered development shop with 15 specialized agents for Claude Code. Features concurrent execution, shared memory, context-forge integration, and web dashboard for 80% faster development.",
   "main": "src/index.js",
   "type": "module",
   "bin": {
@@ -54,7 +54,10 @@
     "development-workflow",
     "coding-assistant",
     "pair-programming",
-    "software-development"
+    "software-development",
+    "context-forge",
+    "prp",
+    "product-requirement-prompt"
   ],
   "author": {
     "name": "WebDev Today",

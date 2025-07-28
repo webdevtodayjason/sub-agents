@@ -31,6 +31,7 @@ Claude Sub-Agents Manager is a powerful CLI tool that enhances Claude Code with 
 - **🎨 Fully Customizable**: Create agents that match your workflow
 - **🔄 Smart Context Management**: Agents operate in isolated contexts
 - **🛠️ Developer First**: Built by developers, for developers
+- **🔗 Context-Forge Integration**: Seamlessly works with context-forge projects and PRPs
 
 ## 🚀 Installation
 
@@ -69,6 +70,10 @@ claude-agents install --all
 > /review
 > /test
 > /debug TypeError in production
+
+# Works seamlessly with context-forge projects
+# Agents automatically detect and use PRPs:
+claude-agents run api-developer --prp feature-auth-prp
 ```
 
 ## 📋 Available Sub-Agents
@@ -567,6 +572,19 @@ commands/
 
 ## 🐛 Troubleshooting
 
+### Agent Not Found After Global Install?
+
+```bash
+# Enable debug mode to see where agents are being searched
+DEBUG=claude-agents claude-agents run project-planner --task "test"
+
+# Check npm global installation path
+npm list -g @webdevtoday/claude-agents
+
+# Verify agents are included in the package
+ls -la $(npm root -g)/@webdevtoday/claude-agents/agents/
+```
+
 ### Agent Not Working?
 
 ```bash
@@ -585,6 +603,9 @@ claude-agents enable <agent-name>
 ```bash
 # Run Claude with debug output
 claude --debug
+
+# Run claude-agents with debug output
+DEBUG=claude-agents claude-agents run <agent> --task "test"
 ```
 
 ### Common Issues
@@ -592,6 +613,7 @@ claude --debug
 - **Permission denied**: Use `sudo` for global install
 - **Agent not found**: Check spelling and installation
 - **Command not working**: Ensure Claude Code is updated
+- **"Agent not found" error**: Enable debug mode to see search paths
 
 ## 📊 Release Notes
 

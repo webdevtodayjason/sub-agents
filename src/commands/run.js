@@ -7,6 +7,11 @@ import { getAgentsDir, CLAUDE_PROJECT_AGENTS_DIR, CLAUDE_USER_AGENTS_DIR } from 
 import { loadConfig } from '../utils/config.js';
 import { getMemoryStore } from '../memory/index.js';
 import yaml from 'yaml';
+import { fileURLToPath } from 'url';
+import { dirname } from 'path';
+
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = dirname(__filename);
 
 export async function runCommand(agentName, options) {
   const spinner = ora();
@@ -18,6 +23,15 @@ export async function runCommand(agentName, options) {
     const config = loadConfig();
     let agentPath = null;
     
+    // Debug logging for development
+    if (process.env.DEBUG === 'claude-agents') {
+      console.log(chalk.gray('Debug: Searching for agent in the following locations:'));
+      console.log(chalk.gray(`  - Project: ${CLAUDE_PROJECT_AGENTS_DIR}`));
+      console.log(chalk.gray(`  - User: ${CLAUDE_USER_AGENTS_DIR}`));
+      console.log(chalk.gray(`  - NPM: ${join(__dirname, '..', '..', 'agents')}`));
+      console.log(chalk.gray(`  - Global: ${join(__dirname, '..', '..', '..', 'agents')}`));
+    }
+    
     // Check project scope first
     const projectPath = join(CLAUDE_PROJECT_AGENTS_DIR, agentName, 'agent.md');
     if (existsSync(projectPath)) {
@@ -28,10 +42,28 @@ export async function runCommand(agentName, options) {
       if (existsSync(userPath)) {
         agentPath = userPath;
       } else {
-        // Check built-in agents
-        const builtInPath = join(process.cwd(), 'agents', agentName, 'agent.md');
-        if (existsSync(builtInPath)) {
-          agentPath = builtInPath;
+        // Check built-in agents in npm package location
+        const npmPath = join(__dirname, '..', '..', 'agents', agentName, 'agent.md');
+        if (existsSync(npmPath)) {
+          agentPath = npmPath;
+        } else {
+          // Check global npm installation
+          const globalNpmPath = join(__dirname, '..', '..', '..', 'agents', agentName, 'agent.md');
+          if (existsSync(globalNpmPath)) {
+            agentPath = globalNpmPath;
+          } else {
+            // Check if we're in a globally installed package
+            const pkgPath = join(__dirname, '..', '..', '..', '..', 'claude-agents', 'agents', agentName, 'agent.md');
+            if (existsSync(pkgPath)) {
+              agentPath = pkgPath;
+            } else {
+              // Check built-in agents in current working directory (for development)
+              const builtInPath = join(process.cwd(), 'agents', agentName, 'agent.md');
+              if (existsSync(builtInPath)) {
+                agentPath = builtInPath;
+              }
+            }
+          }
         }
       }
     }

@@ -1,6 +1,7 @@
 import { readFileSync, writeFileSync, existsSync, mkdirSync } from 'fs';
 import { dirname, join } from 'path';
 import { fileURLToPath } from 'url';
+import { detectContextForge, createContextAwareConfig } from '../utils/contextForgeDetector.js';
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = dirname(__filename);
@@ -8,6 +9,7 @@ const __dirname = dirname(__filename);
 /**
  * Simple memory store with JSON persistence
  * Provides shared memory for agent coordination
+ * Enhanced with context-forge awareness
  */
 class SimpleMemoryStore {
   constructor(optionsOrPath = {}) {
@@ -30,9 +32,85 @@ class SimpleMemoryStore {
     // Load existing memory
     this.load();
     
+    // Initialize context-forge awareness
+    this.initializeContextForge();
+    
     // Auto-save every 30 seconds (skip in test environment)
     if (process.env.NODE_ENV !== 'test') {
       this.autoSaveInterval = setInterval(() => this.save(), 30000);
+    }
+  }
+  
+  /**
+   * Initialize context-forge awareness
+   * Stores project configuration and state in memory for agent coordination
+   */
+  initializeContextForge() {
+    try {
+      const contextConfig = createContextAwareConfig(process.cwd());
+      
+      if (contextConfig.isContextForgeProject) {
+        // Store detection flag
+        this.set('context-forge:detected', true, null);
+        
+        // Store project configuration
+        this.set('context-forge:config', {
+          projectPath: contextConfig.projectPath,
+          structure: contextConfig.detection.structure,
+          techStack: contextConfig.detection.techStack,
+          features: contextConfig.detection.features
+        }, null); // No TTL - permanent during session
+        
+        // Store project rules if available
+        if (contextConfig.projectRules) {
+          this.set('context-forge:rules', contextConfig.projectRules, null);
+        }
+        
+        // Store available PRPs
+        if (contextConfig.availablePRPs && contextConfig.availablePRPs.length > 0) {
+          this.set('context-forge:prps', contextConfig.availablePRPs, 3600000); // 1 hour TTL
+          
+          // Store individual PRP states
+          contextConfig.availablePRPs.forEach(prp => {
+            this.set(`context-forge:prp:${prp.filename}:state`, {
+              name: prp.name,
+              goal: prp.goal,
+              executed: false,
+              validationPassed: false,
+              lastAccessed: Date.now()
+            }, 3600000);
+          });
+        }
+        
+        // Store implementation progress
+        if (contextConfig.implementationPlan) {
+          this.set('context-forge:progress', contextConfig.implementationPlan, 3600000);
+          
+          // Store stage-specific progress
+          contextConfig.implementationPlan.stages.forEach(stage => {
+            this.set(`context-forge:stage:${stage.number}`, {
+              name: stage.name,
+              progress: (stage.completedTasks / stage.totalTasks) * 100,
+              completedTasks: stage.completedTasks,
+              totalTasks: stage.totalTasks
+            }, 3600000);
+          });
+        }
+        
+        // Store available commands
+        if (contextConfig.availableCommands && contextConfig.availableCommands.length > 0) {
+          this.set('context-forge:commands', contextConfig.availableCommands.map(cmd => ({
+            name: cmd.name,
+            category: cmd.category,
+            description: cmd.description
+          })), 3600000);
+        }
+        
+        console.log('Context-forge project detected and initialized in memory');
+      }
+    } catch (error) {
+      // Silently fail if context-forge detection has issues
+      // This ensures the memory system works even without context-forge
     }
   }
   
@@ -331,6 +409,135 @@ class SimpleMemoryStore {
     }
   }
   
+  /**
+   * Context-forge specific methods
+   */
+  
+  /**
+   * Check if this is a context-forge project
+   * @returns {boolean}
+   */
+  isContextForgeProject() {
+    return this.get('context-forge:detected') === true;
+  }
+  
+  /**
+   * Get context-forge project configuration
+   * @returns {object|null}
+   */
+  getContextForgeConfig() {
+    return this.get('context-forge:config');
+  }
+  
+  /**
+   * Get available PRPs
+   * @returns {array}
+   */
+  getAvailablePRPs() {
+    return this.get('context-forge:prps') || [];
+  }
+  
+  /**
+   * Get PRP state
+   * @param {string} prpFilename - PRP filename
+   * @returns {object|null}
+   */
+  getPRPState(prpFilename) {
+    return this.get(`context-forge:prp:${prpFilename}:state`);
+  }
+  
+  /**
+   * Update PRP state
+   * @param {string} prpFilename - PRP filename
+   * @param {object} updates - State updates
+   */
+  updatePRPState(prpFilename, updates) {
+    const currentState = this.getPRPState(prpFilename) || {};
+    const newState = {
+      ...currentState,
+      ...updates,
+      lastUpdated: Date.now()
+    };
+    this.set(`context-forge:prp:${prpFilename}:state`, newState, 3600000);
+  }
+  
+  /**
+   * Get implementation progress
+   * @returns {object|null}
+   */
+  getImplementationProgress() {
+    return this.get('context-forge:progress');
+  }
+  
+  /**
+   * Get stage progress
+   * @param {number} stageNumber - Stage number
+   * @returns {object|null}
+   */
+  getStageProgress(stageNumber) {
+    return this.get(`context-forge:stage:${stageNumber}`);
+  }
+  
+  /**
+   * Update stage progress
+   * @param {number} stageNumber - Stage number
+   * @param {number} completedTasks - Number of completed tasks
+   */
+  updateStageProgress(stageNumber, completedTasks) {
+    const stage = this.getStageProgress(stageNumber);
+    if (stage) {
+      stage.completedTasks = completedTasks;
+      stage.progress = (completedTasks / stage.totalTasks) * 100;
+      this.set(`context-forge:stage:${stageNumber}`, stage, 3600000);
+    }
+  }
+  
+  /**
+   * Get available context-forge commands
+   * @returns {array}
+   */
+  getContextForgeCommands() {
+    return this.get('context-forge:commands') || [];
+  }
+  
+  /**
+   * Track agent action in context-forge project
+   * @param {string} agentName - Name of the agent
+   * @param {string} action - Action performed
+   * @param {object} details - Action details
+   */
+  trackAgentAction(agentName, action, details = {}) {
+    if (!this.isContextForgeProject()) {
+      return;
+    }
+    
+    const key = `context-forge:agent-actions:${Date.now()}`;
+    this.set(key, {
+      agent: agentName,
+      action,
+      details,
+      timestamp: Date.now()
+    }, 86400000); // 24 hour TTL
+  }
+  
+  /**
+   * Get recent agent actions in context-forge project
+   * @param {number} limit - Number of actions to retrieve
+   * @returns {array}
+   */
+  getRecentAgentActions(limit = 10) {
+    const pattern = 'context-forge:agent-actions:*';
+    const actions = this.getByPattern(pattern);
+    
+    // Convert to array and sort by timestamp
+    const sortedActions = Object.entries(actions)
+      .map(([key, value]) => value)
+      .sort((a, b) => b.timestamp - a.timestamp)
+      .slice(0, limit);
+    
+    return sortedActions;
+  }
+
   /**
    * Destroy the memory store
    */
