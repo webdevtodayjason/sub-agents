@@ -33,6 +33,16 @@ Claude Sub-Agents Manager is a powerful CLI tool that enhances Claude Code with 
 - **🛠️ Developer First**: Built by developers, for developers
 - **🔗 Context-Forge Integration**: Seamlessly works with context-forge projects and PRPs
 
+### 🎉 New in v1.4.0 - Context-Forge Integration
+
+- **🛠️ Full Context-Forge Support**: Automatic detection and smart integration
+- **📦 Init Command**: `claude-agents init` for one-command project setup
+- **🧹 Uninstall Command**: Bulk removal with cleanup options
+- **📁 Smart Command Organization**: No conflicts with existing context-forge commands
+- **⚡ Concurrent Execution Rules**: Enforces best practices for maximum performance
+- **📝 CLAUDE.md Integration**: Appends configuration without overwriting
+- **🎯 PRP Awareness**: Agents understand and work with your existing PRPs
+
 ## 🚀 Installation
 
 ### NPM (Recommended)
@@ -55,25 +65,75 @@ npm link
 
 ## ⚡ Quick Start
 
+### For New Projects
 ```bash
-# Initialize in your project (recommended)
+# Initialize all agents in your project
 claude-agents init
-
-# Or install agents globally
-claude-agents install --all
 
 # List available agents
 claude-agents list
+```
 
-# Use an agent via slash command
-# In Claude Code:
-> /review
-> /test
-> /debug TypeError in production
+### For Context-Forge Projects
+```bash
+# Initialize with context-forge awareness
+claude-agents init --respect-context-forge
 
-# Works seamlessly with context-forge projects
-# Agents automatically detect and use PRPs:
-claude-agents run api-developer --task "implement auth endpoints"
+# Agents will:
+# - Detect existing PRPs and CLAUDE.md
+# - Place commands in .claude/commands/agents/
+# - Append to CLAUDE.md without overwriting
+# - Work alongside your existing setup
+```
+
+### Example Agent Tasks
+
+```bash
+# Project Planning - Reads and understands your PRPs
+claude-agents run project-planner --task "Create implementation roadmap from existing PRPs"
+claude-agents run project-planner --task "Break down auth-prp into sprint tasks"
+
+# API Development - PRP-aware implementation
+claude-agents run api-developer --task "Implement user endpoints from feature-auth-prp.md"
+claude-agents run api-developer --task "Create REST API following our conventions"
+
+# Frontend Development
+claude-agents run frontend-developer --task "Build login UI matching dark-theme-ui-prp"
+claude-agents run frontend-developer --task "Create dashboard from feature-dashboard-prp.md"
+
+# Testing & Quality
+claude-agents run tdd-specialist --task "Create tests for authentication flow"
+claude-agents run code-reviewer --task "Review API endpoints for security"
+claude-agents run security-scanner --task "Scan authentication implementation"
+
+# Documentation
+claude-agents run api-documenter --task "Generate OpenAPI spec from implemented endpoints"
+claude-agents run doc-writer --task "Update Implementation.md with progress"
+
+# Debugging & Refactoring
+claude-agents run debugger --task "Analyze login timeout issue"
+claude-agents run refactor --task "Improve error handling in auth module"
+
+# DevOps & Deployment
+claude-agents run devops-engineer --task "Setup CI/CD for main branch"
+claude-agents run devops-engineer --task "Create Docker configuration"
+
+# Product & Marketing
+claude-agents run product-manager --task "Create user stories from PRPs"
+claude-agents run marketing-writer --task "Write feature announcement for auth system"
+```
+
+### Using in Claude Code
+```bash
+# Via slash commands (in .claude/commands/agents/)
+> /agent-review            # Triggers code review
+> /agent-api              # Triggers API development
+> /agent-debug login issue # Debug specific problem
+
+# Via Task tool
+> Task("project-planner: analyze all PRPs and create sprint plan")
+> Task("api-developer: implement endpoints from feature-auth-prp.md")
+> Task("frontend-developer: build UI from feature-dashboard-prp.md")
 ```
 
 ## 📋 Available Sub-Agents
@@ -620,7 +680,35 @@ DEBUG=claude-agents claude-agents run <agent> --task "test"
 
 ## 📊 Release Notes
 
-### Version 1.0.0 (Latest)
+### Version 1.4.0 (Latest) - Context-Forge Integration
+- 🛠️ **Context-Forge Support**: Full integration with context-forge projects
+- 📦 **Init Command**: One-command setup with `claude-agents init`
+- 🧹 **Uninstall Command**: Bulk removal with cleanup options
+- 🎯 **PRP Awareness**: Agents understand and work with existing PRPs
+- 📁 **Smart Commands**: Organized in `.claude/commands/agents/` to avoid conflicts
+- ⚡ **Concurrent Execution**: CLAUDE.md rules for maximum performance
+- 📝 **Safe Integration**: Appends to CLAUDE.md without overwriting
+- 🔧 **Bug Fixes**: Project scope installation now works correctly
+
+### Version 1.3.1
+- 🐛 Fixed "agent not found" error for global installations
+- 📍 Enhanced path resolution for various npm configurations
+- 🔍 Added debug mode with `DEBUG=claude-agents`
+
+### Version 1.3.0
+- 🎯 Context-forge detection utility
+- 🧠 Enhanced agent system with PRP awareness
+- 💾 Memory system integration
+- 📚 Context-aware command templates
+
+### Version 1.2.0
+- 🤖 15 specialized AI agents
+- ⚡ Concurrent execution patterns
+- 💾 Shared memory system
+- 🌐 Web dashboard
+- 🎯 Slash command integration
+
+### Version 1.0.0
 - 🎉 Initial release
 - 6 production-ready agents
 - Interactive CLI interface
