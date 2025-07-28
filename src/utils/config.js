@@ -1,7 +1,7 @@
 import { readFileSync, writeFileSync, existsSync } from 'fs';
 import { getConfigPath } from './paths.js';
 
-const DEFAULT_CONFIG = {
+export const DEFAULT_CONFIG = {
   version: '1.0.0',
   installedAgents: {},
   enabledAgents: [],

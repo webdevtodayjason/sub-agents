@@ -14,6 +14,8 @@ import { createCommand } from './commands/create.js';
 import { removeCommand } from './commands/remove.js';
 import { runCommand } from './commands/run.js';
 import { dashboardCommand } from './commands/dashboard.js';
+import { initCommand } from './commands/init.js';
+import { uninstallCommand } from './commands/uninstall.js';
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = dirname(__filename);
@@ -35,6 +37,16 @@ program
   .name('claude-agents')
   .description('CLI tool to manage Claude Code sub-agents')
   .version(packageJson.version);
+
+// Init command
+program
+  .command('init')
+  .description('Initialize sub-agents in the current project')
+  .option('--respect-context-forge', 'Preserve existing context-forge files')
+  .option('--merge', 'Merge with existing CLAUDE.md (default: true)')
+  .option('--no-merge', 'Do not modify existing CLAUDE.md')
+  .option('--force', 'Overwrite existing files')
+  .action(initCommand);
 
 // Install command
 program
@@ -83,10 +95,20 @@ program
 // Remove command
 program
   .command('remove <agent>')
-  .alias('uninstall')
   .description('Remove an installed agent')
   .option('-p, --project', 'Remove from project scope')
   .action(removeCommand);
+
+// Uninstall command
+program
+  .command('uninstall')
+  .description('Uninstall agents with cleanup options')
+  .option('--all', 'Uninstall all agents')
+  .option('--agent <name>', 'Uninstall specific agent')
+  .option('--user', 'Uninstall from user scope only')
+  .option('--project', 'Uninstall from project scope only')
+  .option('--clean', 'Remove empty directories after uninstall')
+  .action(uninstallCommand);
 
 // Run command
 program

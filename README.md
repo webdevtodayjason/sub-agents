@@ -56,14 +56,14 @@ npm link
 ## ⚡ Quick Start
 
 ```bash
-# See what's available
-claude-agents list
+# Initialize in your project (recommended)
+claude-agents init
 
-# Install your first agent interactively
-claude-agents install
-
-# Or install all agents at once
+# Or install agents globally
 claude-agents install --all
+
+# List available agents
+claude-agents list
 
 # Use an agent via slash command
 # In Claude Code:
@@ -73,7 +73,7 @@ claude-agents install --all
 
 # Works seamlessly with context-forge projects
 # Agents automatically detect and use PRPs:
-claude-agents run api-developer --prp feature-auth-prp
+claude-agents run api-developer --task "implement auth endpoints"
 ```
 
 ## 📋 Available Sub-Agents
@@ -365,6 +365,8 @@ claude-agents install marketing-writer
 
 | Command | Description | Example |
 |---------|-------------|---------|
+| `init` | Initialize agents in project | `claude-agents init` |
+| `init --respect-context-forge` | Init preserving context-forge | `claude-agents init --respect-context-forge` |
 | `install` | Install agents interactively | `claude-agents install` |
 | `install --all` | Install all available agents | `claude-agents install --all` |
 | `install --project` | Install to project directory | `claude-agents install --project` |
@@ -372,7 +374,8 @@ claude-agents install marketing-writer
 | `list --installed` | Show only installed agents | `claude-agents list --installed` |
 | `enable <agent>` | Enable a disabled agent | `claude-agents enable code-reviewer` |
 | `disable <agent>` | Disable an agent | `claude-agents disable test-runner` |
-| `remove <agent>` | Remove/uninstall an agent | `claude-agents remove debugger` |
+| `remove <agent>` | Remove specific agent | `claude-agents remove debugger` |
+| `uninstall` | Bulk uninstall with options | `claude-agents uninstall --all --clean` |
 | `info <agent>` | Show agent details | `claude-agents info debugger` |
 | `create` | Create a custom agent | `claude-agents create` |
 | `run <agent>` | Run agent independently | `claude-agents run marketing-writer --task "write launch post"` |

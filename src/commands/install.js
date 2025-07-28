@@ -1,6 +1,6 @@
 import chalk from 'chalk';
 import ora from 'ora';
-import { writeFileSync, copyFileSync, existsSync } from 'fs';
+import { writeFileSync, copyFileSync, existsSync, mkdirSync } from 'fs';
 import { join, dirname } from 'path';
 import { fileURLToPath } from 'url';
 import { 
@@ -24,6 +24,7 @@ import {
   getAgentDetails,
   formatAgentForInstall
 } from '../utils/agents.js';
+import { detectContextForge } from '../utils/contextForgeDetector.js';
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = dirname(__filename);
@@ -32,6 +33,13 @@ export async function installCommand(options) {
   const spinner = ora();
   
   try {
+    // Detect context-forge project
+    const contextForgeInfo = detectContextForge();
+    if (contextForgeInfo.hasContextForge) {
+      console.log(chalk.cyan('🛠️  Context-Forge project detected!'));
+      console.log(chalk.gray('  Sub-agents will be integrated with your existing setup.\n'));
+    }
+    
     // Ensure directories exist
     ensureDirectories();
     
@@ -110,10 +118,24 @@ export async function installCommand(options) {
         
         // Copy associated slash commands if they exist
         if (agentDetails.commands && agentDetails.commands.length > 0) {
+          // If context-forge project, put commands in sub-agents folder to avoid conflicts
+          const targetCommandsDir = contextForgeInfo.hasContextForge && isProject
+            ? join(commandsDir, 'agents')
+            : commandsDir;
+            
+          // Ensure sub-agents command directory exists
+          if (contextForgeInfo.hasContextForge && isProject && !existsSync(targetCommandsDir)) {
+            mkdirSync(targetCommandsDir, { recursive: true });
+          }
+          
           for (const command of agentDetails.commands) {
             const srcPath = join(__dirname, '..', '..', 'commands', `${command}.md`);
             if (existsSync(srcPath)) {
-              const destPath = join(commandsDir, `${command}.md`);
+              // Prefix command name if in context-forge project to avoid conflicts
+              const commandName = contextForgeInfo.hasContextForge && isProject
+                ? `agent-${command}.md`
+                : `${command}.md`;
+              const destPath = join(targetCommandsDir, commandName);
               copyFileSync(srcPath, destPath);
             }
           }
@@ -141,6 +163,14 @@ export async function installCommand(options) {
     console.log(chalk.green('✓ Installation complete!'));
     console.log(chalk.gray('Use "claude-agents list" to see your installed agents.'));
     console.log(chalk.gray('Agents are automatically enabled. Use "claude-agents disable <agent>" to disable.'));
+    
+    if (contextForgeInfo.hasContextForge && isProject) {
+      console.log('');
+      console.log(chalk.cyan('📝 Context-Forge Integration:'));
+      console.log(chalk.gray('  • Agent commands are in .claude/commands/agents/ to avoid conflicts'));
+      console.log(chalk.gray('  • Agents can work with your existing PRPs'));
+      console.log(chalk.gray('  • Use Task("agent-name: description") in Claude Code'));
+    }
     
   } catch (error) {
     spinner.fail('Installation failed');

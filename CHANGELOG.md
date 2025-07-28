@@ -2,6 +2,35 @@
 
 All notable changes to this project will be documented in this file.
 
+## [1.4.0] - 2025-07-28
+
+### Added
+- **Context-Forge Integration**: Full support for context-forge projects
+  - Automatic detection of context-forge structure
+  - Smart command placement in `.claude/commands/agents/` to avoid conflicts
+  - Respect for existing CLAUDE.md, PRPs, and project structure
+  - Agent commands prefixed with `agent-` in context-forge projects
+- **Init Command**: `claude-agents init` for project initialization
+  - `--respect-context-forge` flag to preserve existing files
+  - `--merge` flag to append to existing CLAUDE.md
+  - Installs all agents and creates proper directory structure
+- **Uninstall Command**: `claude-agents uninstall` for bulk agent removal
+  - `--all` flag to remove all agents
+  - `--clean` flag to remove empty directories
+  - Scope selection (user/project/both)
+  - Preserves context-forge files
+
+### Fixed
+- **Install Command**: Project scope now works correctly
+  - Agents properly installed to `.claude/agents/` when project scope selected
+  - Config saved to correct location based on scope
+  - Commands placed in appropriate directories
+
+### Enhanced
+- Install command now detects context-forge projects
+- Better integration messages for context-forge users
+- Improved command organization to prevent conflicts
+
 ## [1.3.1] - 2025-07-27
 
 ### Fixed
