@@ -1,4 +1,5 @@
 ---
+name: document
 description: Generate or update documentation
 allowed-tools: Task
 argument-hint: [what to document - e.g., API, README, specific module]

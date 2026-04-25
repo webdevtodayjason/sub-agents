@@ -1,4 +1,5 @@
 ---
+name: test
 description: Run tests and fix failures
 allowed-tools: Task
 argument-hint: [specific test file or pattern]
