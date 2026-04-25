@@ -1,4 +1,5 @@
 ---
+name: plan
 agent: project-planner
 description: Launch the project planning agent for strategic task decomposition
 ---

@@ -1,4 +1,5 @@
 ---
+name: test-first
 agent: tdd-specialist
 description: Alternative command for TDD specialist focusing on test-first approach
 ---

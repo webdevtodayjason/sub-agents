@@ -1,4 +1,5 @@
 ---
+name: review
 description: Trigger code review on recent changes
 allowed-tools: Task
 ---

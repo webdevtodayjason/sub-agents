@@ -1,4 +1,5 @@
 ---
+name: deploy
 agent: devops-engineer
 description: Alternative command for DevOps deployment tasks
 ---

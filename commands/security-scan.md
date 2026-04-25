@@ -1,4 +1,5 @@
 ---
+name: security-scan
 description: Scan for security vulnerabilities
 allowed-tools: Task
 argument-hint: [specific directory or file pattern to scan]

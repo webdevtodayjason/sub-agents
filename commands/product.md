@@ -1,4 +1,5 @@
 ---
+name: product
 agent: product-manager
 description: Launch the product management specialist
 ---

@@ -1,4 +1,5 @@
 ---
+name: frontend
 agent: frontend-developer
 description: Launch the frontend development agent for UI implementation
 ---

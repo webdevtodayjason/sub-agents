@@ -1,4 +1,5 @@
 ---
+name: marketing
 agent: marketing-writer
 description: Launch the marketing content specialist
 ---

@@ -1,4 +1,5 @@
 ---
+name: refactor
 description: Refactor code for better structure and maintainability
 allowed-tools: Task
 argument-hint: [file/directory/pattern to refactor]
