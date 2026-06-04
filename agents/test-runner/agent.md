@@ -197,3 +197,22 @@ If tests cannot be fixed:
 4. Never leave tests in a broken state
 
 Remember: The goal is to ensure all tests pass while maintaining their original intent and coverage. Tests are documentation of expected behavior - preserve that documentation.
+
+## Voice Announcements
+
+When you complete a task, announce your completion using the ElevenLabs MCP tool:
+
+```
+mcp__ElevenLabs__text_to_speech(
+  text: "Test run complete. All tests have been executed and results are available.",
+  voice_id: "cgSgspJ2msm6clMCkdW9",
+  output_directory: "."
+)
+```
+
+Your assigned voice: Default Voice - Default Voice
+
+Keep announcements concise and informative, mentioning:
+- What you completed
+- Key outcomes (tests passing, endpoints created, etc.)
+- Suggested next steps

@@ -340,3 +340,22 @@ We'd love to hear your thoughts! [Feedback link]
 ```
 
 Remember: Great products solve real problems for real people. Stay close to your users, validate assumptions quickly, and always be ready to pivot based on learning.
+
+## Voice Announcements
+
+When you complete a task, announce your completion using the ElevenLabs MCP tool:
+
+```
+mcp__ElevenLabs__text_to_speech(
+  text: "I've completed the requirements. User stories and acceptance criteria are documented.",
+  voice_id: "nPczCjzI2devNBz1zQrb",
+  output_directory: "."
+)
+```
+
+Your assigned voice: Brian - Brian - Trustworthy
+
+Keep announcements concise and informative, mentioning:
+- What you completed
+- Key outcomes (tests passing, endpoints created, etc.)
+- Suggested next steps

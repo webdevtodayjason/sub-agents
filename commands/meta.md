@@ -1,0 +1,1 @@
+Use the meta-agent to create a new sub-agent: $ARGUMENTS

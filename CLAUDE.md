@@ -36,6 +36,43 @@ Message 4: Bash("npm install")
 // This is 4x slower!
 ```
 
+## 🤖 Automatic Agent Orchestration
+
+You are an intelligent orchestrator. **PROACTIVELY** use specialized agents for every task:
+
+### Task Analysis Rules
+When receiving ANY task, immediately:
+1. **Identify Components**: Break down the task into specialized areas
+2. **Spawn Agents Concurrently**: Use multiple agents in parallel
+3. **Don't Ask Permission**: Just use agents - that's what they're for!
+
+### Automatic Triggers
+- **Code Changes** → Always spawn: `code-reviewer` + `test-runner`
+- **New Features** → Always spawn: `project-planner` + `tdd-specialist` + relevant developer
+- **Bug/Error** → Always spawn: `debugger` + `test-runner`
+- **Documentation** → Always spawn: `doc-writer` + `api-documenter`
+- **Deployment** → Always spawn: `devops-engineer` + `security-scanner`
+
+### Multi-Agent Patterns
+For complex tasks, spawn agent teams:
+
+**Full Stack Feature:**
+```javascript
+Task("project-planner: Design user authentication system")
+Task("api-developer: Implement auth endpoints")
+Task("frontend-developer: Create login/register UI")
+Task("tdd-specialist: Write comprehensive tests")
+Task("security-scanner: Verify auth security")
+```
+
+**Code Quality Check:**
+```javascript
+Task("code-reviewer: Review recent changes")
+Task("security-scanner: Check for vulnerabilities")
+Task("test-runner: Run all tests")
+Task("refactor: Suggest improvements")
+```
+
 ## 📋 Agent System Overview
 
 This project uses specialized AI agents for comprehensive software development, from planning to deployment and marketing.
@@ -102,21 +139,6 @@ memory.set("api:user:endpoints", {
 const endpoints = memory.get("api:user:endpoints");
 ```
 
-## 🪝 Hooks System
-
-Automated workflows triggered by agent actions:
-
-```json
-{
-  "PostToolUse:Edit": {
-    "commands": ["npm run lint", "npm test"]
-  },
-  "TaskComplete": {
-    "notify": "Task completed: {{task_name}}"
-  }
-}
-```
-
 ## 📊 Performance Guidelines
 
 ### Batch Operations for Speed
@@ -134,8 +156,7 @@ Automated workflows triggered by agent actions:
 1. **Always Think Concurrent**: Before any operation, ask "What else can I do in parallel?"
 2. **Use Agent Specialization**: Each agent is an expert - use the right one
 3. **Share Knowledge**: Use memory system for agent coordination
-4. **Automate with Hooks**: Set up workflows that run automatically
-5. **Monitor Performance**: Dashboard shows real-time metrics
+4. **Monitor Performance**: Dashboard shows real-time metrics
 
 ## 🚀 Quick Start Examples
 
@@ -165,5 +186,37 @@ Access the dashboard at http://localhost:7842:
 - **Task Queue**: Real-time execution monitoring
 - **Memory Viewer**: Inspect shared agent knowledge
 - **Performance Metrics**: Track improvements from concurrent execution
+
+## 🪝 Claude Code Hooks Integration
+
+Sub-agents automatically integrate with Claude Code hooks for enhanced workflow automation:
+
+### Hook Features
+- **Stop Hook** (`.claude/hooks/stop.py`): LLM-generated completion messages with TTS
+- **SubagentStop Hook** (`.claude/hooks/subagent_stop.py`): Agent-specific completion notifications
+- **Voice Announcements**: Automatic audio feedback when agents complete tasks
+
+### TTS Provider Priority
+1. **ElevenLabs MCP** (via Claude Code MCP integration) - Highest quality
+2. **OpenAI TTS** (via API key) - Fast and reliable
+3. **Local TTS** (pyttsx3) - Offline fallback
+
+### Personalization
+Set `ENGINEER_NAME=YourName` environment variable for personalized completion messages:
+- "John, all set!" 
+- "Ready for you, Sarah!"
+- "Complete, Alex!"
+
+### Configuration
+- **Permissions**: Configured in `.claude/settings.json`
+- **Hook Scripts**: Located in `.claude/hooks/` directory
+- **Utilities**: LLM and TTS utilities in `.claude/hooks/utils/`
+
+### Setup
+Hooks are automatically created during `claude-agents init`. The system will:
+1. Create `.claude/hooks/` directory structure
+2. Install hook scripts with UV single-file format
+3. Configure settings.json with proper permissions
+4. Set up TTS utilities with fallback chain
 
 Remember: **Concurrent execution is not optional - it's the foundation of efficient agent orchestration!**

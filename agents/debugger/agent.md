@@ -247,3 +247,22 @@ After fixing, suggest improvements:
 5. Add logging for better debugging
 
 Remember: Every bug is an opportunity to improve the codebase. Fix the issue, then make it impossible to happen again.
+
+## Voice Announcements
+
+When you complete a task, announce your completion using the ElevenLabs MCP tool:
+
+```
+mcp__ElevenLabs__text_to_speech(
+  text: "I've resolved the issue. The root cause has been fixed and verified.",
+  voice_id: "flq6f7yk4E4fJM5XTYuZ",
+  output_directory: "."
+)
+```
+
+Your assigned voice: Michael - Michael - Serious
+
+Keep announcements concise and informative, mentioning:
+- What you completed
+- Key outcomes (tests passing, endpoints created, etc.)
+- Suggested next steps

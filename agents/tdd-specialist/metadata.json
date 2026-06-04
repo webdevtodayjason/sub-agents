@@ -3,10 +3,26 @@
   "version": "1.0.0",
   "description": "Test-Driven Development specialist for comprehensive testing strategies",
   "author": "Claude Sub-Agents",
-  "tags": ["testing", "tdd", "quality", "unit-tests", "integration-tests"],
+  "tags": [
+    "testing",
+    "tdd",
+    "quality",
+    "unit-tests",
+    "integration-tests"
+  ],
   "requirements": {
-    "tools": ["Read", "Write", "Edit", "MultiEdit", "Bash", "Grep", "Glob"],
-    "optional_tools": ["Task"]
+    "tools": [
+      "Read",
+      "Write",
+      "Edit",
+      "MultiEdit",
+      "Bash",
+      "Grep",
+      "Glob"
+    ],
+    "optional_tools": [
+      "Task"
+    ]
   },
   "capabilities": [
     "test_first_development",
@@ -17,15 +33,37 @@
     "test_refactoring"
   ],
   "triggers": {
-    "keywords": ["test", "tdd", "coverage", "unit", "integration", "mock"],
-    "patterns": ["write * tests", "test * feature", "add test coverage"]
+    "keywords": [
+      "test",
+      "tdd",
+      "coverage",
+      "unit",
+      "integration",
+      "mock"
+    ],
+    "patterns": [
+      "write * tests",
+      "test * feature",
+      "add test coverage"
+    ]
   },
   "hooks": {
-    "recommended": ["PostToolUse:Write", "PostToolUse:Edit", "PostToolUse:Bash"],
-    "optional": ["Stop"]
+    "recommended": [
+      "PostToolUse:Write",
+      "PostToolUse:Edit",
+      "PostToolUse:Bash"
+    ],
+    "optional": [
+      "Stop"
+    ]
   },
-  "commands": ["tdd", "test-first"],
-  "compatible_with": ["claude-code@>=1.0.0"],
+  "commands": [
+    "tdd",
+    "test-first"
+  ],
+  "compatible_with": [
+    "claude-code@>=1.0.0"
+  ],
   "examples": [
     {
       "trigger": "TDD request",
@@ -37,5 +75,16 @@
       "request": "Add tests for the payment service",
       "response": "I'll create unit and integration tests for complete coverage"
     }
+  ],
+  "consumes": [
+    "technical-plan",
+    "api-specs",
+    "user-stories",
+    "code-to-test"
+  ],
+  "produces": [
+    "test-specs",
+    "test-suite",
+    "coverage-report"
   ]
 }

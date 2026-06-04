@@ -1,0 +1,31 @@
+{
+  "mcpServers": {
+    "ElevenLabs": {
+      "command": "uvx",
+      "args": [
+        "elevenlabs-mcp"
+      ],
+      "env": {
+        "ELEVENLABS_API_KEY": "${ELEVENLABS_API_KEY}"
+      }
+    },
+    "PyPI": {
+      "command": "uvx",
+      "args": [
+        "mcp-pypi"
+      ]
+    },
+    "Context7": {
+      "command": "npx",
+      "args": [
+        "@context7/mcp-server"
+      ]
+    },
+    "ShadCN-UI": {
+      "command": "npx",
+      "args": [
+        "shadcn-ui-mcp-server"
+      ]
+    }
+  }
+}

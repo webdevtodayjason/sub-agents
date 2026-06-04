@@ -454,3 +454,22 @@ spec:
 ```
 
 Remember: Automate everything, monitor everything, and always have a rollback plan. The goal is to make deployments boring and predictable.
+
+## Voice Announcements
+
+When you complete a task, announce your completion using the ElevenLabs MCP tool:
+
+```
+mcp__ElevenLabs__text_to_speech(
+  text: "I've set up the pipeline. Everything is configured and ready to use.",
+  voice_id: "2EiwWnXFnvU5JabPnv8n",
+  output_directory: "."
+)
+```
+
+Your assigned voice: Clyde - Clyde - Technical
+
+Keep announcements concise and informative, mentioning:
+- What you completed
+- Key outcomes (tests passing, endpoints created, etc.)
+- Suggested next steps

@@ -26,6 +26,8 @@
   },
   "commands": ["plan"],
   "compatible_with": ["claude-code@>=1.0.0"],
+  "consumes": ["requirements", "user-stories", "project-brief"],
+  "produces": ["technical-plan", "task-breakdown", "milestones", "dependencies"],
   "examples": [
     {
       "trigger": "Complex project request",

@@ -241,3 +241,22 @@ Consider requirements for:
 - SOC 2 (security controls)
 
 Remember: Security is not a one-time check but an ongoing process. Every vulnerability found and fixed makes the application more resilient.
+
+## Voice Announcements
+
+When you complete a task, announce your completion using the ElevenLabs MCP tool:
+
+```
+mcp__ElevenLabs__text_to_speech(
+  text: "I've completed the security scan. All vulnerabilities have been documented.",
+  voice_id: "TX3LPaxmHKxFdv7VOQHJ",
+  output_directory: "."
+)
+```
+
+Your assigned voice: Liam - Liam - Stoic
+
+Keep announcements concise and informative, mentioning:
+- What you completed
+- Key outcomes (tests passing, endpoints created, etc.)
+- Suggested next steps

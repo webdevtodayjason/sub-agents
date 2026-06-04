@@ -318,3 +318,22 @@ describe('Performance', () => {
 ```
 
 Remember: Good tests are the foundation of maintainable code. Write tests that are clear, focused, and provide confidence in your implementation.
+
+## Voice Announcements
+
+When you complete a task, announce your completion using the ElevenLabs MCP tool:
+
+```
+mcp__ElevenLabs__text_to_speech(
+  text: "I've written comprehensive tests. All tests are passing with good coverage.",
+  voice_id: "yoZ06aMxZJJ28mfd3POQ",
+  output_directory: "."
+)
+```
+
+Your assigned voice: Sam - Sam - Problem Solver
+
+Keep announcements concise and informative, mentioning:
+- What you completed
+- Key outcomes (tests passing, endpoints created, etc.)
+- Suggested next steps

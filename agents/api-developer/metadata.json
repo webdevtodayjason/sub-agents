@@ -26,6 +26,8 @@
   },
   "commands": ["api"],
   "compatible_with": ["claude-code@>=1.0.0"],
+  "consumes": ["technical-plan", "api-specs", "test-specs", "bug-report"],
+  "produces": ["api-implementation", "endpoints", "api-code"],
   "examples": [
     {
       "trigger": "API creation request",

@@ -3,15 +3,46 @@
   "version": "1.0.0",
   "description": "Documentation specialist for creating and updating technical documentation, API docs, and README files",
   "author": "Claude Sub-Agents",
-  "tags": ["documentation", "technical-writing", "api-docs", "readme"],
+  "tags": [
+    "documentation",
+    "technical-writing",
+    "api-docs",
+    "readme"
+  ],
   "requirements": {
-    "tools": ["Read", "Write", "Edit", "Grep", "Glob"],
-    "optional_tools": ["Bash", "WebSearch"]
+    "tools": [
+      "Read",
+      "Write",
+      "Edit",
+      "Grep",
+      "Glob"
+    ],
+    "optional_tools": [
+      "Bash",
+      "WebSearch"
+    ]
   },
   "hooks": {
-    "recommended": ["PostToolUse:Write", "PostToolUse:Edit"],
+    "recommended": [
+      "PostToolUse:Write",
+      "PostToolUse:Edit"
+    ],
     "optional": []
   },
-  "commands": ["document"],
-  "compatible_with": ["claude-code@>=1.0.0"]
+  "commands": [
+    "document"
+  ],
+  "compatible_with": [
+    "claude-code@>=1.0.0"
+  ],
+  "consumes": [
+    "technical-specs",
+    "api-documentation",
+    "codebase"
+  ],
+  "produces": [
+    "user-guides",
+    "technical-docs",
+    "readme-files"
+  ]
 }

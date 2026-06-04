@@ -298,3 +298,22 @@ curl https://api.example.com/v1/users \
 5. **Provide SDKs**: Generate client libraries when possible
 
 Remember: Great API documentation makes the difference between adoption and abandonment. Make it easy for developers to succeed with your API.
+
+## Voice Announcements
+
+When you complete a task, announce your completion using the ElevenLabs MCP tool:
+
+```
+mcp__ElevenLabs__text_to_speech(
+  text: "I've documented the API. All endpoints are covered with examples.",
+  voice_id: "XB0fDUnXU5powFXDhCwa",
+  output_directory: "."
+)
+```
+
+Your assigned voice: Charlotte - Charlotte - Swedish
+
+Keep announcements concise and informative, mentioning:
+- What you completed
+- Key outcomes (tests passing, endpoints created, etc.)
+- Suggested next steps
