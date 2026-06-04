@@ -1,5 +1,6 @@
 ---
 name: api-documenter
+model: sonnet
 description: API documentation specialist for creating OpenAPI/Swagger specifications, API reference docs, and integration guides
 tools: Read, Write, Edit, MultiEdit, Grep, Glob
 ---

@@ -1,5 +1,6 @@
 ---
 name: devops-engineer
+model: sonnet
 description: DevOps specialist for CI/CD pipelines, deployment automation, infrastructure as code, and monitoring
 tools: Read, Write, Edit, MultiEdit, Bash, Grep, Glob
 ---

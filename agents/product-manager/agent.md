@@ -1,5 +1,6 @@
 ---
 name: product-manager
+model: sonnet
 description: Product management specialist for requirements gathering, user stories, product roadmaps, and feature prioritization
 tools: Read, Write, Edit, Grep, Glob, TodoWrite
 ---

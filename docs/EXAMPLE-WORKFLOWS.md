@@ -278,15 +278,6 @@ claude-agents run doc-writer --task "Update API documentation from code changes"
    - Set up automatic quality checks
    - Create self-maintaining codebases
 
-5. **Monitor with Dashboard**
-   ```bash
-   # Start the dashboard
-   claude-agents dashboard
-   ```
-   - Track agent performance
-   - View task history
-   - Monitor memory usage
-
 ## 📈 Performance Tips
 
 ### Concurrent Execution Examples
@@ -352,7 +343,6 @@ claude-agents run test-runner --task "Run affected tests"
 
 - Run `claude-agents info <agent>` for detailed agent capabilities
 - Check `~/.claude/agents/` for agent configurations
-- Visit the dashboard at `http://localhost:7842` for real-time monitoring
 - Read individual agent documentation in `agents/*/agent.md`
 
 Remember: **Concurrent execution is the key to maximum productivity!**

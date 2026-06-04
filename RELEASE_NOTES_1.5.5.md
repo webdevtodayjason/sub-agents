@@ -24,8 +24,12 @@ safely, and triages the open community PRs.
 - **Removed hardcoded absolute path.** Agent voice examples and the voice hook no longer hardcode a developer-specific `output_directory`; they now use the current project directory (`"."` / `process.cwd()`), so installs write audio to the user's own project.
 - **Context-forge command naming.** When installing into a context-forge project, command files are renamed to `agent-<command>.md` to avoid conflicts. Installs now rewrite the frontmatter `name` to match, so an explicit `name:` field can no longer defeat the conflict-avoidance prefix.
 - **`allowed-tools: Task`** added to the 14 agent-dispatch slash commands that were missing it (community PR #10).
+- **`model: sonnet`** declared in all 16 agent definitions (was missing — flagged by the NLPM audit, issues #8/#12). Override per-agent as needed.
 - `templates/**` is now included in the published package (`files`).
 - Repo hygiene: TTS scratch artifacts (`*.mp3`, `tmp/`) and dev-local `.claude/` are now gitignored.
+
+## 🗑️ Removed
+- **Web dashboard** (`claude-agents dashboard` command + `dashboard/` app). It was never shipped to npm (`dashboard/` was excluded from `files`) and its launcher was a stub that spawned a non-existent script in a missing directory — the source of the `spawn /bin/sh ENOENT` crash in **issue #2**. Removing it also eliminates the `shell: true` spawn flagged as the High-severity security item in **issue #8**. README/CLAUDE.md references updated.
 
 ## 📦 Updating
 ```bash

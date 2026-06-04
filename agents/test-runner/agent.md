@@ -1,5 +1,6 @@
 ---
 name: test-runner
+model: sonnet
 description: Automated test execution specialist. Use proactively to run tests and fix failures. Automatically detects test frameworks and ensures all tests pass.
 tools: Bash, Read, Edit, Grep, Glob
 ---

@@ -13,7 +13,6 @@ import { infoCommand } from './commands/info.js';
 import { createCommand } from './commands/create.js';
 import { removeCommand } from './commands/remove.js';
 import { runCommand } from './commands/run.js';
-import { dashboardCommand } from './commands/dashboard.js';
 import { initCommand } from './commands/init.js';
 import { uninstallCommand } from './commands/uninstall.js';
 import { voiceCommand } from './commands/voice.js';
@@ -134,14 +133,6 @@ program
   .action(() => {
     console.log(chalk.yellow('Update command coming soon!'));
   });
-
-// Dashboard command
-program
-  .command('dashboard')
-  .description('Launch the web dashboard for agent management')
-  .option('-p, --port <port>', 'Dashboard port', '7842')
-  .option('--no-browser', "Don't open browser automatically")
-  .action(dashboardCommand);
 
 // Voice command
 program

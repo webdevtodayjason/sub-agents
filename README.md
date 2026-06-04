@@ -661,7 +661,6 @@ claude-agents init
 | `info <agent>` | Show agent details | `claude-agents info debugger` |
 | `create` | Create a custom agent | `claude-agents create` |
 | `run <agent>` | Run agent independently | `claude-agents run marketing-writer --task "write launch post"` |
-| `dashboard` | Launch web dashboard | `claude-agents dashboard` |
 | `diagnose` | Check installation health | `claude-agents diagnose` |
 | `voice` | Configure voice settings | `claude-agents voice --setup` |
 | `chain` | Run multiple agents | `claude-agents chain api-developer test-runner` |
@@ -680,25 +679,6 @@ claude-agents run api-developer --file api-spec.md
 # Interactive mode
 claude-agents run tdd-specialist --interactive
 ```
-
-### Web Dashboard
-
-Monitor and manage your agents through the web interface:
-
-```bash
-# Start dashboard on port 7842
-claude-agents dashboard
-
-# Custom port
-claude-agents dashboard --port 8080
-```
-
-Dashboard features:
-- Real-time agent status
-- Task execution history
-- Memory system viewer
-- Performance metrics
-- Quick agent actions
 
 ### Creating Custom Agents
 
