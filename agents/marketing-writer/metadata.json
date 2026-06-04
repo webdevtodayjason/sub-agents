@@ -3,10 +3,27 @@
   "version": "1.0.0",
   "description": "Marketing content specialist for technical marketing and product messaging",
   "author": "Claude Sub-Agents",
-  "tags": ["marketing", "content", "copywriting", "seo", "landing-pages", "blog"],
+  "tags": [
+    "marketing",
+    "content",
+    "copywriting",
+    "seo",
+    "landing-pages",
+    "blog"
+  ],
   "requirements": {
-    "tools": ["Read", "Write", "Edit", "MultiEdit", "WebSearch", "Grep", "Glob"],
-    "optional_tools": ["WebFetch"]
+    "tools": [
+      "Read",
+      "Write",
+      "Edit",
+      "MultiEdit",
+      "WebSearch",
+      "Grep",
+      "Glob"
+    ],
+    "optional_tools": [
+      "WebFetch"
+    ]
   },
   "capabilities": [
     "landing_page_copy",
@@ -17,15 +34,36 @@
     "content_strategy"
   ],
   "triggers": {
-    "keywords": ["marketing", "content", "blog", "landing page", "copy", "announcement"],
-    "patterns": ["write * marketing", "create * content", "draft * announcement"]
+    "keywords": [
+      "marketing",
+      "content",
+      "blog",
+      "landing page",
+      "copy",
+      "announcement"
+    ],
+    "patterns": [
+      "write * marketing",
+      "create * content",
+      "draft * announcement"
+    ]
   },
   "hooks": {
-    "recommended": ["PostToolUse:Write", "PostToolUse:Edit"],
-    "optional": ["Stop"]
+    "recommended": [
+      "PostToolUse:Write",
+      "PostToolUse:Edit"
+    ],
+    "optional": [
+      "Stop"
+    ]
   },
-  "commands": ["marketing", "content"],
-  "compatible_with": ["claude-code@>=1.0.0"],
+  "commands": [
+    "marketing",
+    "content"
+  ],
+  "compatible_with": [
+    "claude-code@>=1.0.0"
+  ],
   "examples": [
     {
       "trigger": "Landing page creation",
@@ -37,5 +75,15 @@
       "request": "Write a blog post about DevOps best practices",
       "response": "I'll write an SEO-optimized technical blog post"
     }
+  ],
+  "consumes": [
+    "product-specs",
+    "user-guides",
+    "feature-list"
+  ],
+  "produces": [
+    "marketing-content",
+    "landing-page",
+    "blog-posts"
   ]
 }

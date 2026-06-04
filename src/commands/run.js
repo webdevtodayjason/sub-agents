@@ -4,20 +4,33 @@ import { join } from 'path';
 import inquirer from 'inquirer';
 import ora from 'ora';
 import { getAgentsDir, CLAUDE_PROJECT_AGENTS_DIR, CLAUDE_USER_AGENTS_DIR } from '../utils/paths.js';
-import { loadConfig } from '../utils/config.js';
+import { loadConfig, getVoiceConfig } from '../utils/config.js';
 import { getMemoryStore } from '../memory/index.js';
+import { createHandoff, getAvailableHandoffs, formatHandoffInputs, createSummary } from '../utils/handoff.js';
+import { createTaskExecution, completeTaskExecution, failTaskExecution } from '../utils/hooks/task-integration.js';
+import { isClaudeCodeEnvironment } from '../utils/hooks/runner.js';
 import yaml from 'yaml';
 import { fileURLToPath } from 'url';
 import { dirname } from 'path';
+import { announceAgentComplete, announceError } from '../utils/tts/index.js';
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = dirname(__filename);
 
 export async function runCommand(agentName, options) {
   const spinner = ora();
+  const voiceConfig = getVoiceConfig();
+  const useVoice = options.voice !== undefined ? options.voice : voiceConfig.enabled;
+  const isClaudeCode = isClaudeCodeEnvironment();
+  let taskData = null;
   
   try {
     console.log(chalk.bold.blue(`🤖 Running ${agentName} Agent\n`));
+    
+    // Show environment context
+    if (isClaudeCode) {
+      console.log(chalk.gray('🔗 Running in Claude Code environment - hooks enabled'));
+    }
     
     // Find the agent file
     const config = loadConfig();
@@ -143,6 +156,15 @@ export async function runCommand(agentName, options) {
       status: 'running'
     }, 3600000); // 1 hour TTL
     
+    // Create task tracking for hooks integration
+    if (isClaudeCode) {
+      taskData = createTaskExecution(agentName, task, {
+        targetFile,
+        executionId,
+        verbose: options.verbose || process.env.DEBUG === 'claude-agents'
+      });
+    }
+    
     // Share task context with other agents
     memory.set(`shared:current-task`, {
       agent: agentName,
@@ -150,12 +172,41 @@ export async function runCommand(agentName, options) {
       executionId
     }, 3600000);
     
+    // Check for available handoffs
+    const availableHandoffs = getAvailableHandoffs(agentName);
+    const handoffInputs = formatHandoffInputs(availableHandoffs);
+    
+    if (availableHandoffs.length > 0) {
+      console.log(chalk.bold.blue('\n📥 Available Handoffs:'));
+      availableHandoffs.forEach(handoff => {
+        console.log(chalk.gray('├─'), `From ${handoff.from}:`, chalk.yellow(handoff.type));
+        console.log(chalk.gray('│  '), chalk.dim(handoff.summary));
+      });
+      console.log();
+    }
+    
     spinner.start('Initializing agent...');
     
-    // Simulate agent execution
+    // Load metadata to check consumes/produces
+    const metadataPath = join(dirname(agentPath), 'metadata.json');
+    let metadata = {};
+    if (existsSync(metadataPath)) {
+      metadata = JSON.parse(readFileSync(metadataPath, 'utf-8'));
+    }
+    
+    // Check if agent has required inputs
+    const requiredInputs = metadata.consumes || [];
+    const availableTypes = Object.keys(handoffInputs);
+    const missingInputs = requiredInputs.filter(req => !availableTypes.includes(req));
+    
+    if (missingInputs.length > 0 && requiredInputs.length > 0) {
+      spinner.warn('Missing required inputs: ' + missingInputs.join(', '));
+    }
+    
+    // Simulate agent execution with handoff context
     // In a real implementation, this would:
     // 1. Create an isolated execution context
-    // 2. Load the agent with its specific tools
+    // 2. Pass handoff inputs to the agent
     // 3. Execute the task
     // 4. Return results
     
@@ -168,14 +219,56 @@ export async function runCommand(agentName, options) {
     await new Promise(resolve => setTimeout(resolve, 1500));
     spinner.succeed('Agent execution completed');
     
+    // Voice announcement for completion
+    if (useVoice) {
+      await announceAgentComplete(agentName, task);
+    }
+    
     // Update execution status
-    memory.set(`agent:${agentName}:last-execution`, {
+    const completionData = {
       id: executionId,
       task,
       targetFile,
       completedAt: new Date().toISOString(),
       status: 'completed'
-    });
+    };
+    memory.set(`agent:${agentName}:last-execution`, completionData);
+    
+    // Create handoffs for agent outputs
+    const produces = metadata.produces || [];
+    if (produces.length > 0) {
+      // Simulate agent outputs (in real implementation, these would come from agent)
+      const mockOutputs = {
+        'technical-plan': { phases: ['design', 'implement', 'test'], duration: '5 days' },
+        'api-implementation': { endpoints: ['/users', '/products'], status: 'complete' },
+        'test-results': { passed: 10, failed: 0, coverage: '95%' },
+        'review-report': { issues: 2, suggestions: 5, approved: true }
+      };
+      
+      produces.forEach(outputType => {
+        if (mockOutputs[outputType]) {
+          const summary = createSummary(agentName, task, { success: true, output_type: outputType });
+          createHandoff(agentName, '*', outputType, mockOutputs[outputType], summary);
+          console.log(chalk.gray('├─'), 'Created handoff:', chalk.cyan(outputType));
+        }
+      });
+    }
+    
+    // Complete task tracking and emit hooks
+    if (isClaudeCode && taskData) {
+      try {
+        await completeTaskExecution(taskData.id, {
+          success: true,
+          handoffs: produces.map(type => ({ type, data: mockOutputs[type] })),
+          outputs: mockOutputs,
+          completionData
+        }, {
+          verbose: options.verbose || process.env.DEBUG === 'claude-agents'
+        });
+      } catch (hookError) {
+        console.warn(chalk.yellow('Warning: Hook execution failed:'), hookError.message);
+      }
+    }
     
     // Display results
     console.log('\n' + chalk.bold.green('✨ Execution Summary:'));
@@ -223,6 +316,23 @@ export async function runCommand(agentName, options) {
   } catch (error) {
     spinner.fail('Agent execution failed');
     console.error(chalk.red('Error:'), error.message);
+    
+    // Complete task tracking with failure
+    if (isClaudeCode && taskData) {
+      try {
+        await failTaskExecution(taskData.id, error, {
+          verbose: options.verbose || process.env.DEBUG === 'claude-agents'
+        });
+      } catch (hookError) {
+        console.warn(chalk.yellow('Warning: Hook execution failed:'), hookError.message);
+      }
+    }
+    
+    // Voice announcement for error
+    if (useVoice) {
+      await announceError(error.message, agentName);
+    }
+    
     process.exit(1);
   }
 }

@@ -314,3 +314,22 @@ Before completing refactoring:
 - [ ] Documentation updated if needed
 
 Remember: The best refactoring is invisible to the end user but makes developers' lives easier.
+
+## Voice Announcements
+
+When you complete a task, announce your completion using the ElevenLabs MCP tool:
+
+```
+mcp__ElevenLabs__text_to_speech(
+  text: "I've refactored the code. The structure is improved and all tests are passing.",
+  voice_id: "GBv7mTt0atIp3Br8iCZE",
+  output_directory: "."
+)
+```
+
+Your assigned voice: Thomas - Thomas - Calm
+
+Keep announcements concise and informative, mentioning:
+- What you completed
+- Key outcomes (tests passing, endpoints created, etc.)
+- Suggested next steps

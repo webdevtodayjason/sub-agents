@@ -33,7 +33,24 @@ Claude Sub-Agents Manager is a powerful CLI tool that enhances Claude Code with 
 - **🛠️ Developer First**: Built by developers, for developers
 - **🔗 Context-Forge Integration**: Seamlessly works with context-forge projects and PRPs
 
-### 🎉 New in v1.4.0 - Context-Forge Integration
+### 🎉 New in v1.5.1 - Enhanced Voice Integration & Hook Improvements
+
+- **🔊 Voice Announcements**: Real-time audio feedback when agents complete tasks
+- **🎙️ ElevenLabs Integration**: High-quality voice synthesis with Sarah voice
+- **🪝 Improved Hook System**: Better settings.json merging during updates
+- **🔧 Voice Setup Wizard**: Interactive configuration with `claude-agents voice --setup`
+- **📢 Auto-Announcements**: Hear when sub-agents complete tasks in Claude Code
+- **🎯 FFmpeg Detection**: Automatic detection and installation guidance
+
+### 📦 New in v1.5.0 - Voice Features, Chaining & Meta-Agent
+
+- **🔗 Agent Chaining**: Run multiple agents in powerful sequences with data handoffs
+- **🤖 Meta-Agent**: Automatically generate new specialized agents from descriptions
+- **🎙️ Multiple TTS Providers**: ElevenLabs (via MCP), OpenAI, and local system TTS
+- **⚙️ Voice Configuration**: Easy setup with `claude-agents voice` command
+- **🎯 Enhanced Orchestration**: Context-preserving handoffs between agents
+
+### 📦 New in v1.4.0 - Context-Forge Integration
 
 - **🛠️ Full Context-Forge Support**: Automatic detection and smart integration
 - **📦 Init Command**: `claude-agents init` for one-command project setup
@@ -47,12 +64,17 @@ Claude Sub-Agents Manager is a powerful CLI tool that enhances Claude Code with 
 
 ### NPM (Recommended)
 ```bash
+# Install latest version
+npm install -g @webdevtoday/claude-agents@latest
+
+# Or install without @latest (gets latest by default)
 npm install -g @webdevtoday/claude-agents
 ```
 
 ### Yarn
 ```bash
-yarn global add @webdevtoday/claude-agents
+# Install latest version
+yarn global add @webdevtoday/claude-agents@latest
 ```
 
 ### From Source
@@ -61,6 +83,31 @@ git clone https://github.com/webdevtodayjason/sub-agents.git
 cd sub-agents
 npm install
 npm link
+```
+
+### 🔄 Updating Existing Installation
+
+If you already have claude-agents installed:
+
+```bash
+# Update to latest version
+npm update -g @webdevtoday/claude-agents@latest
+
+# Or with yarn
+yarn global upgrade @webdevtoday/claude-agents@latest
+```
+
+After updating the package, **update your projects** to get the latest features:
+
+```bash
+# In your project directory, run init to update hooks and configurations
+claude-agents init
+
+# This will:
+# - Update Claude Code hooks to latest versions
+# - Merge new hook configurations into existing settings.json
+# - Add any new agent features
+# - Preserve your existing configurations
 ```
 
 ## ⚡ Quick Start
@@ -84,6 +131,53 @@ claude-agents init --respect-context-forge
 # - Place commands in .claude/commands/agents/
 # - Append to CLAUDE.md without overwriting
 # - Work alongside your existing setup
+```
+
+## 🔊 Voice Setup (Optional)
+
+Voice announcements provide real-time audio feedback when agents complete tasks in Claude Code.
+
+### Quick Setup
+```bash
+# Run the interactive setup wizard
+claude-agents voice --setup
+
+# Or configure manually
+claude-agents voice --enable
+claude-agents voice --provider mcp  # or openai, local
+```
+
+### Voice Requirements
+
+#### Basic Voice (Local TTS)
+- **No additional requirements** - works out of the box
+- Uses system text-to-speech (macOS/Windows/Linux)
+
+#### High-Quality Voice (ElevenLabs/OpenAI)
+- **FFmpeg**: Required for audio playback
+  - macOS: `brew install ffmpeg`
+  - Windows: `choco install ffmpeg` or download from ffmpeg.org
+  - Linux: `sudo apt-get install ffmpeg`
+- **API Keys**: 
+  - ElevenLabs: Get from [elevenlabs.io](https://elevenlabs.io)
+  - OpenAI: Get from [platform.openai.com](https://platform.openai.com)
+
+### Voice Features
+- **Auto-Announcements**: Hear when sub-agents complete tasks
+- **AI Summaries**: OpenAI/Anthropic generates contextual completion messages
+- **Multiple Providers**: ElevenLabs (best quality), OpenAI, or local TTS
+- **Claude Code Integration**: Works seamlessly with hooks system
+
+### Testing Voice
+```bash
+# Test with default message
+claude-agents voice --test
+
+# Test with custom message
+claude-agents voice --test "Hello from Claude Agents"
+
+# Check voice status
+claude-agents voice --status
 ```
 
 ### Example Agent Tasks
@@ -121,6 +215,11 @@ claude-agents run devops-engineer --task "Create Docker configuration"
 # Product & Marketing
 claude-agents run product-manager --task "Create user stories from PRPs"
 claude-agents run marketing-writer --task "Write feature announcement for auth system"
+
+# Agent Chaining - NEW!
+claude-agents chain feature-development  # Full development pipeline
+claude-agents chain api-developer frontend-developer --task "Build user feature"
+claude-agents chain debugger api-developer test-runner --voice  # With voice announcements
 ```
 
 ### Using in Claude Code
@@ -155,6 +254,7 @@ claude-agents run marketing-writer --task "Write feature announcement for auth s
 | **devops-engineer** | DevOps specialist for CI/CD, infrastructure automation, and deployment | `/devops [task]` |
 | **product-manager** | Product management specialist for requirements, roadmaps, and user stories | `/product [feature]` |
 | **marketing-writer** | Marketing content specialist for technical marketing and product messaging | `/marketing [content]` |
+| **meta-agent** | Agent generator that creates new specialized agents from descriptions | `/meta [description]` |
 
 ## 🤖 Detailed Agent Descriptions
 
@@ -419,6 +519,128 @@ claude-agents install marketing-writer
 > /marketing product launch post
 > /marketing API feature announcement
 
+### 🤖 Meta-Agent
+*Agent generator for creating new specialized agents*
+
+- Fetches latest Claude Code documentation
+- Generates properly formatted agent files
+- Suggests optimal tool configurations
+- Creates both simple and complex agents
+- Follows best practices automatically
+
+```bash
+# Install
+claude-agents install meta-agent
+
+# Use
+> /meta create a database migration specialist
+> Task("meta-agent: create an agent for monitoring system performance")
+```
+
+## 🔊 Voice Features
+
+Enable real-time voice announcements for agent completions and errors:
+
+### Setup Voice
+
+#### Option 1: ElevenLabs via MCP (Recommended)
+
+Run this command to add the ElevenLabs MCP server:
+
+```bash
+claude mcp add ElevenLabs -e ELEVENLABS_API_KEY=your-api-key -- uvx elevenlabs-mcp
+```
+
+#### Option 2: OpenAI TTS
+
+```bash
+# Configure API key
+claude-agents voice --api-key
+
+# Select OpenAI and enter your API key
+```
+
+#### Option 3: Local System TTS
+
+Works out of the box on macOS (say), Linux (espeak), and Windows (PowerShell).
+
+### Using Voice
+
+```bash
+# Configure voice settings
+claude-agents voice
+
+# Enable/disable voice
+claude-agents voice --enable
+claude-agents voice --disable
+
+# Test voice
+claude-agents voice --test "Hello from Claude agents"
+
+# Run agent with voice
+claude-agents run api-developer --task "Create user API" --voice
+
+# Set voice provider
+claude-agents voice --provider mcp     # ElevenLabs via MCP
+claude-agents voice --provider openai  # OpenAI TTS
+claude-agents voice --provider local   # System TTS
+```
+
+### Voice Configuration
+
+Voice settings are stored in `~/.claude-agents/config.json`:
+
+```json
+{
+  "voice": {
+    "enabled": true,
+    "provider": "auto",
+    "announcements": {
+      "agentStart": false,
+      "agentComplete": true,
+      "errors": true,
+      "progress": false
+    }
+  }
+}
+```
+
+## 🚨 Troubleshooting
+
+### Hook Errors and API Failures
+
+If you're seeing errors like:
+- `Failed to spawn: .claude/hooks/stop.py`
+- `No such file or directory (os error 2)`
+- API Error 400: `tool_use ids were found without tool_result blocks`
+
+**Quick Fix:**
+```bash
+# In your project directory
+chmod +x .claude/hooks/*.py
+chmod +x .claude/hooks/utils/llm/*.py
+chmod +x .claude/hooks/utils/tts/*.py
+
+# Or run our fix script
+curl -sSL https://raw.githubusercontent.com/webdevtodayjason/sub-agents/main/scripts/fix-hooks.sh | bash
+```
+
+**Full Diagnosis:**
+```bash
+# Check your installation health
+claude-agents diagnose
+
+# Reinstall hooks with proper permissions
+claude-agents init
+```
+
+### Common Issues
+
+1. **Hooks not executable**: Run the chmod commands above
+2. **Hooks missing**: Run `claude-agents init` to restore
+3. **Python/uv not found**: Install uv from https://github.com/astral-sh/uv
+4. **Voice not working**: Install ffmpeg and run `claude-agents voice --setup`
+
 ## 📖 Documentation
 
 ### Command Reference
@@ -440,6 +662,9 @@ claude-agents install marketing-writer
 | `create` | Create a custom agent | `claude-agents create` |
 | `run <agent>` | Run agent independently | `claude-agents run marketing-writer --task "write launch post"` |
 | `dashboard` | Launch web dashboard | `claude-agents dashboard` |
+| `diagnose` | Check installation health | `claude-agents diagnose` |
+| `voice` | Configure voice settings | `claude-agents voice --setup` |
+| `chain` | Run multiple agents | `claude-agents chain api-developer test-runner` |
 
 ### Independent Agent Execution
 
@@ -680,7 +905,15 @@ DEBUG=claude-agents claude-agents run <agent> --task "test"
 
 ## 📊 Release Notes
 
-### Version 1.4.0 (Latest) - Context-Forge Integration
+### Version 1.5.0 (Latest) - Voice Features & Meta-Agent
+- 🔊 **Voice Announcements**: Real-time TTS feedback for agent completions
+- 🤖 **Meta-Agent**: Automatically generate new specialized agents
+- 🎙️ **MCP Integration**: ElevenLabs TTS via MCP server
+- 🔧 **Voice CLI**: Complete voice configuration command
+- 📝 **Enhanced CLAUDE.md**: More aggressive concurrent execution rules
+- ⚡ **Performance**: Improved agent orchestration patterns
+
+### Version 1.4.0 - Context-Forge Integration
 - 🛠️ **Context-Forge Support**: Full integration with context-forge projects
 - 📦 **Init Command**: One-command setup with `claude-agents init`
 - 🧹 **Uninstall Command**: Bulk removal with cleanup options

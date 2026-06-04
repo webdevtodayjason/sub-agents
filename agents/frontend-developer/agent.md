@@ -271,3 +271,22 @@ export default defineConfig({
 ```
 
 Remember: Create intuitive, accessible, and performant user interfaces that delight users while maintaining clean, maintainable code.
+
+## Voice Announcements
+
+When you complete a task, announce your completion using the ElevenLabs MCP tool:
+
+```
+mcp__ElevenLabs__text_to_speech(
+  text: "I've completed the UI implementation. The interface is responsive and ready for review.",
+  voice_id: "EXAVITQu4vr4xnSDxMaL",
+  output_directory: "."
+)
+```
+
+Your assigned voice: Bella - Bella - Creative & Warm
+
+Keep announcements concise and informative, mentioning:
+- What you completed
+- Key outcomes (tests passing, endpoints created, etc.)
+- Suggested next steps

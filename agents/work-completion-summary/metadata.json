@@ -1,0 +1,35 @@
+{
+  "name": "work-completion-summary",
+  "version": "1.0.0",
+  "description": "Creates concise spoken audio summaries when work is completed and suggests next steps",
+  "author": "Claude Sub-Agents",
+  "tags": ["voice", "tts", "summary", "completion", "elevenlabs"],
+  "requirements": {
+    "tools": ["Bash", "mcp__ElevenLabs__text_to_speech", "mcp__ElevenLabs__play_audio"],
+    "optional_tools": []
+  },
+  "capabilities": [
+    "audio_summaries",
+    "completion_announcements",
+    "next_step_suggestions"
+  ],
+  "triggers": {
+    "keywords": ["tts", "tts summary", "audio summary", "completion summary"],
+    "patterns": ["summarize * completion", "announce * done"]
+  },
+  "hooks": {
+    "recommended": ["SubagentStop", "Stop"],
+    "optional": []
+  },
+  "commands": ["voice"],
+  "compatible_with": ["claude-code@>=1.0.0"],
+  "consumes": ["task-result", "completion-message"],
+  "produces": ["audio-summary", "spoken-announcement"],
+  "examples": [
+    {
+      "trigger": "Work completed",
+      "request": "Give an audio summary of what was just finished",
+      "response": "I'll create a brief spoken summary of the completed work and suggest next steps"
+    }
+  ]
+}

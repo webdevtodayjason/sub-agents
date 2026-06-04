@@ -3,17 +3,50 @@
   "version": "1.0.0",
   "description": "UI/UX specialist for designing and implementing interfaces using ShadCN UI components",
   "author": "Claude Sub-Agents",
-  "tags": ["ui", "ux", "shadcn", "components", "frontend", "design", "accessibility"],
+  "tags": [
+    "ui",
+    "ux",
+    "shadcn",
+    "components",
+    "frontend",
+    "design",
+    "accessibility"
+  ],
   "requirements": {
-    "tools": ["Glob", "Grep", "LS", "Read", "WebFetch", "TodoWrite", "Task"],
-    "optional_tools": ["ExitPlanMode", "NotebookRead", "Edit", "Write", "MultiEdit"]
+    "tools": [
+      "Glob",
+      "Grep",
+      "LS",
+      "Read",
+      "WebFetch",
+      "TodoWrite",
+      "Task"
+    ],
+    "optional_tools": [
+      "ExitPlanMode",
+      "NotebookRead",
+      "Edit",
+      "Write",
+      "MultiEdit"
+    ]
   },
   "hooks": {
-    "recommended": ["PostToolUse:Write", "PostToolUse:Edit"],
-    "optional": ["Stop", "PostToolUse:MultiEdit"]
+    "recommended": [
+      "PostToolUse:Write",
+      "PostToolUse:Edit"
+    ],
+    "optional": [
+      "Stop",
+      "PostToolUse:MultiEdit"
+    ]
   },
-  "commands": ["ui", "shadcn"],
-  "compatible_with": ["claude-code@>=1.0.0"],
+  "commands": [
+    "ui",
+    "shadcn"
+  ],
+  "compatible_with": [
+    "claude-code@>=1.0.0"
+  ],
   "examples": [
     {
       "trigger": "User needs UI implementation",
@@ -30,5 +63,15 @@
       "request": "I'm working on a dashboard that needs charts, cards, and a navigation sidebar",
       "response": "I'll use the shadcn-ui-builder agent to design your dashboard using ShadCN's component system"
     }
+  ],
+  "consumes": [
+    "ui-requirements",
+    "design-system",
+    "component-list"
+  ],
+  "produces": [
+    "ui-components",
+    "component-library",
+    "shadcn-config"
   ]
 }

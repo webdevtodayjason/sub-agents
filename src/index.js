@@ -16,6 +16,10 @@ import { runCommand } from './commands/run.js';
 import { dashboardCommand } from './commands/dashboard.js';
 import { initCommand } from './commands/init.js';
 import { uninstallCommand } from './commands/uninstall.js';
+import { voiceCommand } from './commands/voice.js';
+import { chainCommand } from './commands/chain.js';
+import { setupCommand } from './commands/setup.js';
+import { diagnoseCommand } from './commands/diagnose.js';
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = dirname(__filename);
@@ -46,6 +50,7 @@ program
   .option('--merge', 'Merge with existing CLAUDE.md (default: true)')
   .option('--no-merge', 'Do not modify existing CLAUDE.md')
   .option('--force', 'Overwrite existing files')
+  .option('--no-hooks', 'Skip Claude Code hooks installation')
   .action(initCommand);
 
 // Install command
@@ -117,6 +122,8 @@ program
   .option('-t, --task <task>', 'Task description for the agent')
   .option('-f, --file <file>', 'Target file or directory')
   .option('-i, --interactive', 'Interactive mode for task input')
+  .option('--voice', 'Enable voice announcements')
+  .option('--no-voice', 'Disable voice announcements')
   .action(runCommand);
 
 // Update command
@@ -135,6 +142,46 @@ program
   .option('-p, --port <port>', 'Dashboard port', '7842')
   .option('--no-browser', "Don't open browser automatically")
   .action(dashboardCommand);
+
+// Voice command
+program
+  .command('voice')
+  .description('Configure voice announcements')
+  .option('--setup', 'Run interactive setup wizard')
+  .option('--status', 'Show voice system status')
+  .option('--enable', 'Enable voice announcements')
+  .option('--disable', 'Disable voice announcements')
+  .option('--provider <provider>', 'Set voice provider (auto, mcp, openai, local)')
+  .option('--test [text]', 'Test voice with optional text')
+  .option('--api-key', 'Configure API keys interactively')
+  .action(voiceCommand);
+
+// Chain command
+program
+  .command('chain <nameOrAgents...>')
+  .description('Run agents in sequence or parallel')
+  .option('--task <task>', 'Task description for all agents')
+  .option('--tasks <tasks...>', 'Individual tasks for each agent')
+  .option('--voice', 'Enable voice announcements')
+  .option('--isolated', 'Run agents in isolated mode')
+  .option('--concurrent', 'Run agents concurrently where possible')
+  .option('--save <name>', 'Save as a reusable chain')
+  .action(chainCommand);
+
+// Setup command
+program
+  .command('setup')
+  .description('Interactive setup wizard for agents, voice, and API keys')
+  .option('--agents-only', 'Configure only agents')
+  .option('--voice-only', 'Configure only voice settings')
+  .option('--keys-only', 'Configure only API keys')
+  .action(setupCommand);
+
+// Diagnose command
+program
+  .command('diagnose')
+  .description('Diagnose installation issues and check hook health')
+  .action(diagnoseCommand);
 
 // Config command
 program

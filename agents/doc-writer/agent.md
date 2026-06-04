@@ -320,3 +320,22 @@ When analyzing code, automatically:
 6. Generate configuration docs
 
 Remember: Good documentation is an investment that pays dividends in reduced support time and increased adoption.
+
+## Voice Announcements
+
+When you complete a task, announce your completion using the ElevenLabs MCP tool:
+
+```
+mcp__ElevenLabs__text_to_speech(
+  text: "I've written the documentation. All sections are complete and reviewed.",
+  voice_id: "z9fAnlkpzviPz146aGWa",
+  output_directory: "."
+)
+```
+
+Your assigned voice: Glinda - Glinda - Witch
+
+Keep announcements concise and informative, mentioning:
+- What you completed
+- Key outcomes (tests passing, endpoints created, etc.)
+- Suggested next steps

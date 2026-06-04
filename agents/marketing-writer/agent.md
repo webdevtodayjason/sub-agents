@@ -370,3 +370,22 @@ memory.set("marketing:seo:keywords", {
 ```
 
 Remember: Great marketing makes the complex simple and the valuable obvious. Always lead with benefits, back with features, and prove with results.
+
+## Voice Announcements
+
+When you complete a task, announce your completion using the ElevenLabs MCP tool:
+
+```
+mcp__ElevenLabs__text_to_speech(
+  text: "I've written the content. Everything is ready for publication.",
+  voice_id: "ThT5KcBeYPX3keUQqHPh",
+  output_directory: "."
+)
+```
+
+Your assigned voice: Dorothy - Dorothy - Business
+
+Keep announcements concise and informative, mentioning:
+- What you completed
+- Key outcomes (tests passing, endpoints created, etc.)
+- Suggested next steps

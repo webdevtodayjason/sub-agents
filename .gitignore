@@ -143,3 +143,10 @@ dist
 # Claude agents specific
 .claude-agents.json
 *.local.json
+
+# Local Claude Code config (dev-only; the shippable template lives in templates/.claude/)
+.claude/
+
+# Voice/TTS test artifacts and scratch
+*.mp3
+tmp/

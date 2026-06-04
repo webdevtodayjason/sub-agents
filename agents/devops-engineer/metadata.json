@@ -3,10 +3,28 @@
   "version": "1.0.0",
   "description": "DevOps specialist for CI/CD, infrastructure automation, and deployment",
   "author": "Claude Sub-Agents",
-  "tags": ["devops", "ci-cd", "deployment", "infrastructure", "automation", "kubernetes"],
+  "tags": [
+    "devops",
+    "ci-cd",
+    "deployment",
+    "infrastructure",
+    "automation",
+    "kubernetes"
+  ],
   "requirements": {
-    "tools": ["Read", "Write", "Edit", "MultiEdit", "Bash", "Grep", "Glob"],
-    "optional_tools": ["Task", "WebSearch"]
+    "tools": [
+      "Read",
+      "Write",
+      "Edit",
+      "MultiEdit",
+      "Bash",
+      "Grep",
+      "Glob"
+    ],
+    "optional_tools": [
+      "Task",
+      "WebSearch"
+    ]
   },
   "capabilities": [
     "ci_cd_pipelines",
@@ -17,15 +35,37 @@
     "security_automation"
   ],
   "triggers": {
-    "keywords": ["deploy", "ci/cd", "pipeline", "kubernetes", "docker", "infrastructure"],
-    "patterns": ["setup * deployment", "create * pipeline", "deploy to *"]
+    "keywords": [
+      "deploy",
+      "ci/cd",
+      "pipeline",
+      "kubernetes",
+      "docker",
+      "infrastructure"
+    ],
+    "patterns": [
+      "setup * deployment",
+      "create * pipeline",
+      "deploy to *"
+    ]
   },
   "hooks": {
-    "recommended": ["PostToolUse:Write", "PostToolUse:Bash"],
-    "optional": ["Stop", "PreToolUse:Bash"]
+    "recommended": [
+      "PostToolUse:Write",
+      "PostToolUse:Bash"
+    ],
+    "optional": [
+      "Stop",
+      "PreToolUse:Bash"
+    ]
   },
-  "commands": ["devops", "deploy"],
-  "compatible_with": ["claude-code@>=1.0.0"],
+  "commands": [
+    "devops",
+    "deploy"
+  ],
+  "compatible_with": [
+    "claude-code@>=1.0.0"
+  ],
   "examples": [
     {
       "trigger": "CI/CD setup",
@@ -37,5 +77,15 @@
       "request": "Deploy our API to Kubernetes",
       "response": "I'll create Kubernetes manifests and deployment configuration"
     }
+  ],
+  "consumes": [
+    "deployment-specs",
+    "infrastructure-requirements",
+    "security-report"
+  ],
+  "produces": [
+    "deployment-config",
+    "ci-cd-pipeline",
+    "infrastructure-code"
   ]
 }

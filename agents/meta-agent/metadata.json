@@ -1,0 +1,41 @@
+{
+  "name": "meta-agent",
+  "version": "1.0.0",
+  "description": "Agent generator that creates new sub-agents from descriptions",
+  "author": "Claude Sub-Agents Manager",
+  "category": "meta",
+  "tags": [
+    "agent-creation",
+    "meta",
+    "generator",
+    "automation"
+  ],
+  "examples": [
+    {
+      "prompt": "Create a sub-agent that monitors system performance",
+      "description": "Generates a performance monitoring agent with appropriate tools"
+    },
+    {
+      "prompt": "Build an agent for managing git workflows",
+      "description": "Creates a git specialist agent with version control capabilities"
+    },
+    {
+      "prompt": "Make an agent that can analyze and optimize database queries",
+      "description": "Generates a database optimization specialist"
+    }
+  ],
+  "bestPractices": [
+    "Use the meta-agent when you need to create specialized agents quickly",
+    "Provide detailed descriptions of what the new agent should do",
+    "Review and customize the generated agent for your specific needs",
+    "The meta-agent follows current Claude Code documentation and best practices"
+  ],
+  "consumes": [
+    "agent-requirements",
+    "capability-gap"
+  ],
+  "produces": [
+    "new-agent",
+    "agent-config"
+  ]
+}

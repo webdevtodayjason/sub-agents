@@ -26,6 +26,8 @@
   },
   "commands": ["frontend"],
   "compatible_with": ["claude-code@>=1.0.0"],
+  "consumes": ["api-endpoints", "ui-mockups", "user-stories", "components"],
+  "produces": ["ui-implementation", "ui-components", "frontend-code"],
   "examples": [
     {
       "trigger": "UI development request",
