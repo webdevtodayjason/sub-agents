@@ -1,5 +1,6 @@
 ---
 name: frontend-developer
+model: sonnet
 description: Frontend development specialist for creating modern, responsive web applications using React, Vue, and other frameworks
 tools: Read, Write, Edit, MultiEdit, Bash, Grep, Glob, Task
 ---

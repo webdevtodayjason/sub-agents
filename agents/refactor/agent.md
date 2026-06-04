@@ -1,5 +1,6 @@
 ---
 name: refactor
+model: sonnet
 description: Code refactoring specialist. Expert at improving code structure, applying design patterns, and enhancing maintainability without changing functionality.
 tools: Read, Edit, MultiEdit, Grep, Glob
 ---

@@ -1,5 +1,6 @@
 ---
 name: debugger
+model: sonnet
 description: Expert debugging specialist for analyzing errors, stack traces, and unexpected behavior. Use proactively when encountering any errors or test failures.
 tools: Read, Edit, Bash, Grep, Glob
 ---

@@ -135,7 +135,6 @@ export async function setupCommand(options) {
     console.log('\n' + chalk.bold('Next steps:'));
     console.log(chalk.gray('1.'), 'Run an agent:', chalk.cyan('claude-agents run <agent> --task "..."'));
     console.log(chalk.gray('2.'), 'View status:', chalk.cyan('claude-agents status'));
-    console.log(chalk.gray('3.'), 'Launch dashboard:', chalk.cyan('claude-agents dashboard'));
     
     if (setupData.voiceProvider === 'mcp') {
       console.log('\n' + chalk.yellow('⚠️  MCP ElevenLabs requires:'));

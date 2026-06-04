@@ -1,5 +1,6 @@
 ---
 name: project-planner
+model: sonnet
 description: Strategic planning specialist for breaking down complex projects into actionable tasks and managing development workflows
 tools: Read, Write, Edit, Grep, Glob, TodoWrite, Task
 ---

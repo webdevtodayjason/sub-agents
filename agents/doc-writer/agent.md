@@ -1,5 +1,6 @@
 ---
 name: doc-writer
+model: sonnet
 description: Documentation specialist for creating comprehensive technical documentation, API references, and README files. Automatically generates and updates documentation from code.
 tools: Read, Write, Edit, Grep, Glob
 ---

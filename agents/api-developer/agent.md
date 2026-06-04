@@ -1,5 +1,6 @@
 ---
 name: api-developer
+model: sonnet
 description: Backend API development specialist for creating robust, scalable REST and GraphQL APIs with best practices
 tools: Read, Write, Edit, MultiEdit, Bash, Grep, Glob, Task
 ---

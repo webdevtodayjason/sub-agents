@@ -1,5 +1,6 @@
 ---
 name: security-scanner
+model: sonnet
 description: Security vulnerability scanner that proactively detects security issues, exposed secrets, and suggests remediation. Use after code changes or for security audits.
 tools: Read, Grep, Glob, Bash
 ---

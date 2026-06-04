@@ -1,5 +1,6 @@
 ---
 name: marketing-writer
+model: sonnet
 description: Marketing content specialist for product descriptions, landing pages, blog posts, and technical marketing materials
 tools: Read, Write, Edit, MultiEdit, WebSearch, Grep, Glob
 ---

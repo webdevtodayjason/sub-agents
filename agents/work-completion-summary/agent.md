@@ -1,5 +1,6 @@
 ---
 name: work-completion-summary
+model: sonnet
 description: Proactively triggered when work is completed to provide concise audio summaries and suggest next steps. If they say 'tts' or 'tts summary' or 'audio summary' use this agent. When you prompt this agent, describe exactly what you want them to communicate to the user. Remember, this agent has no context about any questions or previous conversations between you and the user. So be sure to communicate well so they can respond to the user. Be concise, and to the point - aim for 2 sentences max.
 tools: Bash, mcp__ElevenLabs__text_to_speech, mcp__ElevenLabs__play_audio
 memory: agent:work-completion-summary:summaries

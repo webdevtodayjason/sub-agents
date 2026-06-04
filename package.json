@@ -1,7 +1,7 @@
 {
   "name": "@webdevtoday/claude-agents",
   "version": "1.5.5",
-  "description": "AI-powered development shop with 16 specialized agents for Claude Code. Features agent chaining, voice announcements, meta-agent, concurrent execution, shared memory, context-forge integration, and web dashboard for 80% faster development.",
+  "description": "AI-powered development shop with 16 specialized agents for Claude Code. Features agent chaining, voice announcements, meta-agent, concurrent execution, shared memory, and context-forge integration for faster development.",
   "main": "src/index.js",
   "type": "module",
   "bin": {

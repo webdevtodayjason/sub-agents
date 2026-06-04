@@ -80,7 +80,6 @@ This project uses specialized AI agents for comprehensive software development, 
 ### Core Development Commands
 - `claude-agents install [agent]` - Install specific agents
 - `claude-agents run <agent> --task "description"` - Run agent independently
-- `claude-agents dashboard` - Launch web dashboard (port 7842)
 - `claude-agents list` - View all available agents
 
 ### Slash Commands (In Claude Code)
@@ -156,7 +155,7 @@ const endpoints = memory.get("api:user:endpoints");
 1. **Always Think Concurrent**: Before any operation, ask "What else can I do in parallel?"
 2. **Use Agent Specialization**: Each agent is an expert - use the right one
 3. **Share Knowledge**: Use memory system for agent coordination
-4. **Monitor Performance**: Dashboard shows real-time metrics
+4. **Review Outputs**: Verify each agent's deliverable before building on it
 
 ## 🚀 Quick Start Examples
 
@@ -177,15 +176,6 @@ claude-agents run api-documenter --task "OpenAPI specification"
 /agent:code-reviewer "Check error handling"
 /agent:tdd-specialist "Add error test cases"
 ```
-
-## 📈 Dashboard Features
-
-Access the dashboard at http://localhost:7842:
-
-- **Agent Overview**: Status, capabilities, and quick actions
-- **Task Queue**: Real-time execution monitoring
-- **Memory Viewer**: Inspect shared agent knowledge
-- **Performance Metrics**: Track improvements from concurrent execution
 
 ## 🪝 Claude Code Hooks Integration
 

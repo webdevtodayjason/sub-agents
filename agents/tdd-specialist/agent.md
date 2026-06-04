@@ -1,5 +1,6 @@
 ---
 name: tdd-specialist
+model: sonnet
 description: Test-Driven Development specialist for creating comprehensive test suites, implementing TDD workflows, and ensuring code quality
 tools: Read, Write, Edit, MultiEdit, Bash, Grep, Glob
 ---

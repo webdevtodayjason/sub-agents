@@ -124,16 +124,6 @@ async function runTests() {
     }
   });
   
-  // Dashboard command test
-  await test('should validate dashboard command', async () => {
-    // Just test that the command exists and validates ports
-    const { code, stderr } = await runCommand(['dashboard', '--port', 'invalid']);
-    if (!stderr.includes('Invalid port')) {
-      // Dashboard might not fail immediately, that's ok
-      // Just checking command exists
-    }
-  });
-  
   console.log(`\n📊 Test Results: ${passed} passed, ${failed} failed\n`);
   
   if (failed > 0) {

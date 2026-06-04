@@ -1,5 +1,6 @@
 ---
 name: shadcn-ui-builder
+model: sonnet
 description: UI/UX specialist for designing and implementing interfaces using the ShadCN UI component library. Expert at creating modern, accessible, component-based designs.
 tools: Glob, Grep, LS, ExitPlanMode, Read, NotebookRead, WebFetch, TodoWrite, Task, Bash
 ---

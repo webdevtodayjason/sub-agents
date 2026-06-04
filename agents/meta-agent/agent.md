@@ -1,5 +1,6 @@
 ---
 name: meta-agent
+model: sonnet
 description: Generates new, complete Claude Code sub-agent configuration files from descriptions. Use this to create new agents. Use PROACTIVELY when users ask to create new sub-agents.
 tools: Write, WebFetch, MultiEdit
 ---
