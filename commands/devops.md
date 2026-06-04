@@ -1,4 +1,5 @@
 ---
+name: devops
 agent: devops-engineer
 description: Launch the DevOps specialist for CI/CD and deployment
 allowed-tools: Task

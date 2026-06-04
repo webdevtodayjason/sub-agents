@@ -1,4 +1,5 @@
 ---
+name: api
 agent: api-developer
 description: Launch the API development agent for backend implementation
 allowed-tools: Task

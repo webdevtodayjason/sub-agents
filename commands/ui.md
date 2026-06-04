@@ -1,4 +1,5 @@
 ---
+name: ui
 agent: shadcn-ui-builder
 description: Launch the ShadCN UI builder agent for interface design and implementation
 allowed-tools: Task

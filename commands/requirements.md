@@ -1,4 +1,5 @@
 ---
+name: requirements
 agent: product-manager
 description: Alternative command for requirements gathering
 allowed-tools: Task

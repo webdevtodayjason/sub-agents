@@ -1,4 +1,5 @@
 ---
+name: api-docs
 agent: api-documenter
 description: Launch the API documentation specialist for OpenAPI specs
 allowed-tools: Task

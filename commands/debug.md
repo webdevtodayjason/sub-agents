@@ -1,4 +1,5 @@
 ---
+name: debug
 description: Debug an error or issue
 allowed-tools: Task
 argument-hint: [error message or description]
