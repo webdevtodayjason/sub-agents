@@ -1,6 +1,6 @@
 import chalk from 'chalk';
 import ora from 'ora';
-import { writeFileSync, copyFileSync, existsSync, mkdirSync } from 'fs';
+import { writeFileSync, copyFileSync, existsSync, mkdirSync, readFileSync } from 'fs';
 import { join, dirname } from 'path';
 import { fileURLToPath } from 'url';
 import { 
@@ -28,6 +28,28 @@ import { detectContextForge } from '../utils/contextForgeDetector.js';
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = dirname(__filename);
+
+/**
+ * Force a command file's frontmatter `name` to a given value.
+ *
+ * Context-forge installs rename command files to `agent-<command>.md` to avoid
+ * conflicts, but the slash-command resolver prefers an explicit frontmatter
+ * `name:` over the filename. Without rewriting it, a `name: api` field would
+ * make the prefixed `agent-api.md` register as `api`, silently defeating the
+ * rename. Rewriting the name to match the prefixed filename keeps both the
+ * explicit-name discoverability and the conflict-avoidance prefix.
+ */
+export function setCommandName(content, name) {
+  const fmMatch = content.match(/^---\n([\s\S]*?)\n---/);
+  if (!fmMatch) {
+    return `---\nname: ${name}\n---\n\n${content}`;
+  }
+  const fm = fmMatch[1];
+  const newFm = /^name:.*$/m.test(fm)
+    ? fm.replace(/^name:.*$/m, `name: ${name}`)
+    : `name: ${name}\n${fm}`;
+  return content.replace(fmMatch[0], `---\n${newFm}\n---`);
+}
 
 export async function installCommand(options) {
   const spinner = ora();
@@ -131,12 +153,19 @@ export async function installCommand(options) {
           for (const command of agentDetails.commands) {
             const srcPath = join(__dirname, '..', '..', 'commands', `${command}.md`);
             if (existsSync(srcPath)) {
+              const isPrefixed = contextForgeInfo.hasContextForge && isProject;
               // Prefix command name if in context-forge project to avoid conflicts
-              const commandName = contextForgeInfo.hasContextForge && isProject
-                ? `agent-${command}.md`
-                : `${command}.md`;
+              const commandName = isPrefixed ? `agent-${command}.md` : `${command}.md`;
               const destPath = join(targetCommandsDir, commandName);
-              copyFileSync(srcPath, destPath);
+
+              if (isPrefixed) {
+                // Rewrite the frontmatter `name` to match the prefixed filename so an
+                // explicit `name:` field can't defeat the conflict-avoidance rename.
+                const content = readFileSync(srcPath, 'utf-8');
+                writeFileSync(destPath, setCommandName(content, `agent-${command}`));
+              } else {
+                copyFileSync(srcPath, destPath);
+              }
             }
           }
         }
