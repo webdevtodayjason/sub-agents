@@ -1,5 +1,8 @@
 # Claude Sub-Agents Configuration
 
+> [!NOTE]
+> **This project is archived (June 2026) and no longer maintained.** Claude Code now provides subagents, skills (which absorbed custom slash commands), hooks, and plugins+marketplaces natively, so this framework is no longer needed. See the README for migration pointers. The guidance below is preserved as historical context.
+
 ## 🚨 CRITICAL: Concurrent Execution for Maximum Performance
 
 **GOLDEN RULE**: Execute ALL related operations concurrently in a single message for 2-3x performance improvement.

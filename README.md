@@ -1,3 +1,19 @@
+> [!IMPORTANT]
+> ## 🗄️ This project is archived (June 2026)
+>
+> **`@webdevtoday/claude-agents` is no longer maintained.** When it was built (mid-2025) it filled a real gap: there was no first-class way to install and manage a pack of subagents, slash commands, and hooks in Claude Code. **Claude Code now provides all of that natively** — so a framework that copies these files into your project is no longer needed.
+>
+> **Use the built-in primitives instead:**
+> - **Subagents** — specialized workers with their own context, auto-delegated by description → https://code.claude.com/docs/en/sub-agents
+> - **Skills** — reusable workflows/knowledge invoked with `/name` or auto-loaded (custom slash commands have been **merged into skills**) → https://code.claude.com/docs/en/skills
+> - **Hooks** — event-driven automation → https://code.claude.com/docs/en/hooks
+> - **Plugins + marketplaces** — the modern way to package and share a bundle of agents/skills/hooks/MCP across projects and teams → https://code.claude.com/docs/en/plugins
+> - **Memory** — CLAUDE.md plus native auto-memory replace the in-process "memory" store this tool simulated → https://code.claude.com/docs/en/memory
+>
+> The final release (`v1.5.5`) is left intact for reference. Thanks to everyone who used or contributed to it. The content below is preserved as historical documentation.
+
+---
+
 # Claude Sub-Agents Manager - AI-Powered Development Assistants for Claude Code
 
 <div align="center">
